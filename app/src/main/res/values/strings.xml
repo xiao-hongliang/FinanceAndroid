@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">耀联投资</string>
+    <!-- 注册页面 -->
+    <string name="register">注册新用户</string>
+    <string name="register_phone">手机号</string>
+    <string name="register_confirm">提交验证码</string>
+    <string name="register_code_hint">请输入短信验证码</string>
+    <string name="register_code_send">发送验证码</string>
+    <string name="register_phone_send_hint">请输入手机号码</string>
+    <string name="register_randCode_send_hint">请输入短信验证码</string>
+
 </resources>
