@@ -8,6 +8,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //测试android studio的提交
+        //测试android studio的提交
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
