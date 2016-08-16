@@ -91,4 +91,21 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/login_forgetPwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_bg"
+            android:text="@string/login_forgetPwd"
+            android:layout_alignParentRight="true"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
 </LinearLayout>

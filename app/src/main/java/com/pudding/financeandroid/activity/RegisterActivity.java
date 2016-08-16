@@ -27,11 +27,14 @@ public class RegisterActivity extends AbActivity{
     private TextView phoneTv;
     private TextView randCodeTv;
     private Button sendRandCodeBtn;
+    private Button submitBtn;
     private ImageView xieyiImageV;
     private int codeTime = 5;// 发送短信默认时间
     private int time = 1000;
     //是否选中了协议
     private Boolean isChecked = true;
+    //是否是忘记密码的操作页面
+    private Boolean isForgetPwd = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,29 @@ public class RegisterActivity extends AbActivity{
         setStatusBar(R.color.title_bg);
         mContext = RegisterActivity.this;
 
+        submitBtn = (Button) this.findViewById(R.id.submit_register_btn);
         AbTitleBar mAbTitleBar = this.getTitleBar();
-        TextView rightView = new TitleBarUtil(mContext).setActivityTitleBarAndRight(mAbTitleBar, R.string.register,
-                mContext, R.layout.ico_home_right_list);
+
+        String sourceType = getIntent().getStringExtra("sourceType");
+        if(sourceType != null && "forgetPwd".equals(sourceType)) {
+            isForgetPwd = true;
+            new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.forgetPwd_title);
+            submitBtn.setText(R.string.forgetPwd_submit_btn);
+            this.findViewById(R.id.xieyi_view).setVisibility(View.GONE);
+        }else {
+            TextView rightView = new TitleBarUtil(mContext).setActivityTitleBarAndRight(mAbTitleBar, R.string.register,
+                    mContext, R.layout.ico_home_right_list);
+            // 设置右边菜单的点击事件
+            rightView.setText(R.string.login_title);
+            rightView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(mContext, UserLoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
         //设置AbTitleBar在最上
         this.setTitleBarOverlay(false);
         mAbTitleBar.getLogoView().setOnClickListener(new View.OnClickListener() {
@@ -52,21 +75,11 @@ public class RegisterActivity extends AbActivity{
                 finish();
             }
         });
-        // 设置右边菜单的点击事件
-        rightView.setText(R.string.login_title);
-        rightView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(mContext, UserLoginActivity.class);
-                startActivity(intent);
-            }
-        });
 
         phoneTv = (TextView) this.findViewById(R.id.phone_text_view);
         randCodeTv = (TextView) this.findViewById(R.id.code_text_view);
         //提交验证的绑定事件
-        this.findViewById(R.id.submit_register_btn).setOnClickListener(new View.OnClickListener() {
+        submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String phone = phoneTv.getText().toString().trim();
@@ -79,13 +92,17 @@ public class RegisterActivity extends AbActivity{
                     AbToastUtil.showToast(mContext, R.string.register_randCode_send_hint);
                     return;
                 }
-                if(!isChecked) {
+                if(!isForgetPwd && !isChecked) {
                     AbToastUtil.showToast(mContext, R.string.register_xieyi);
                     return;
                 }
                 //做点验证验证码的事情吧
                 Intent intent = new Intent();
                 intent.setClass(mContext, RegisterSubmitActivity.class);
+                intent.putExtra("phone", phone);
+                if(isForgetPwd) {
+                    intent.putExtra("sourceType", "forgetPwd");
+                }
                 startActivity(intent);
             }
         });

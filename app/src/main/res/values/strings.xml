@@ -23,6 +23,20 @@
     <string name="login_register">注册</string>
     <string name="login_pwd_hint">密码</string>
     <string name="login_pwd_response">请输入登录密码</string>
+    <string name="login_forgetPwd">忘记密码？</string>
     <!-- 登陆页面end -->
+
+    <!-- 忘记密码页面start -->
+    <string name="forgetPwd_title">忘记密码</string>
+    <string name="forgetPwd_submit_btn">重置密码</string>
+    <!-- 忘记密码页面end -->
+
+    <!-- 首页标题页面start -->
+    <string name="main_title_name">耀联投资</string>
+    <string name="licai_title_name">理财产品</string>
+    <string name="daikuan_title_name">贷款产品</string>
+    <string name="company_title_name">公司介绍</string>
+    <string name="user_title_name">个人中心</string>
+    <!-- 首页标题页面end -->
 
 </resources>

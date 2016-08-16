@@ -21,6 +21,8 @@ public class RegisterSubmitActivity extends AbActivity{
     private Context mContext;
     private TextView pwdFirstTv;
     private TextView pwdSecondTv;
+    //是否是忘记密码的操作页面
+    private Boolean isForgetPwd = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,14 @@ public class RegisterSubmitActivity extends AbActivity{
         mContext = RegisterSubmitActivity.this;
 
         AbTitleBar mAbTitleBar = this.getTitleBar();
-        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.register);
+
+        String sourceType = getIntent().getStringExtra("sourceType");
+        int titleName = R.string.register;
+        if(sourceType != null && "forgetPwd".equals(sourceType)) {
+            isForgetPwd = true;
+            titleName = R.string.forgetPwd_title;
+        }
+        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, titleName);
         //设置AbTitleBar在最上
         this.setTitleBarOverlay(false);
         //绑定返回上一页的点击按钮
@@ -61,8 +70,13 @@ public class RegisterSubmitActivity extends AbActivity{
                     AbToastUtil.showToast(mContext, R.string.register_pwd_disagree);
                     return;
                 }
+                String phone = getIntent().getStringExtra("phone");
                 //好了，可以提交密码了
-                AbToastUtil.showToast(mContext, "可以提交密码了");
+                if(isForgetPwd) {
+                    AbToastUtil.showToast(mContext, "忘记密码了,phone：" + phone);
+                }else {
+                    AbToastUtil.showToast(mContext, "注册新用户了，phone：" + phone);
+                }
             }
         });
 

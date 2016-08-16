@@ -75,10 +75,11 @@ public class TitleBarUtil {
 	 * @param  mAbTitleBar  继承AbActivity的AbTitleBar对象
 	 * @return void    返回类型
 	 */
-	public void setActivityTitleBar(AbTitleBar mAbTitleBar,int resId)
+	public void setActivityTitleBar(AbTitleBar mAbTitleBar, int resId)
 	{ 
         mAbTitleBar.setTitleText(resId);
         mAbTitleBar.setTitleBarHeight(96);
+//		mAbTitleBar.setTitleTextSize(40);
 //        mAbTitleBar.setLogo2(R.drawable.app_n);
         mAbTitleBar.setTitleBarBackground(R.color.title_bg);
         mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
@@ -86,6 +87,16 @@ public class TitleBarUtil {
         mAbTitleBar.setTitleBarGravity(Gravity.CENTER,Gravity.CENTER);//设置文字对齐方式
 		// mAbTitleBar.setVisibility(View.GONE);
 		// 设置AbTitleBar在最上 
+	}
+
+	public View setActivityTitleAndRight(AbTitleBar mAbTitleBar, int resId, Context mContext, int rightLayout) {
+		// 添加右边操作按钮
+		mAbTitleBar.clearRightView();
+		LayoutInflater mInflater = LayoutInflater.from(mContext);
+		View rightViewList = mInflater.inflate(rightLayout, null);
+		mAbTitleBar.addRightView(rightViewList);
+		setActivityTitleBar(mAbTitleBar, resId);
+		return rightViewList;
 	}
 	
 	public void setActivityTitleBarBack(AbTitleBar mAbTitleBar,int resId)
