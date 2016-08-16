@@ -1,11 +1,13 @@
 package com.pudding.financeandroid.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
@@ -25,8 +27,11 @@ public class RegisterActivity extends AbActivity{
     private TextView phoneTv;
     private TextView randCodeTv;
     private Button sendRandCodeBtn;
+    private ImageView xieyiImageV;
     private int codeTime = 5;// 发送短信默认时间
     private int time = 1000;
+    //是否选中了协议
+    private Boolean isChecked = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +41,28 @@ public class RegisterActivity extends AbActivity{
         mContext = RegisterActivity.this;
 
         AbTitleBar mAbTitleBar = this.getTitleBar();
-        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.register);
+        TextView rightView = new TitleBarUtil(mContext).setActivityTitleBarAndRight(mAbTitleBar, R.string.register,
+                mContext, R.layout.ico_home_right_list);
         //设置AbTitleBar在最上
         this.setTitleBarOverlay(false);
-
-        //绑定返回上一页的点击按钮
         mAbTitleBar.getLogoView().setOnClickListener(new View.OnClickListener() {
             @Override
+            //绑定返回上一页的点击按钮
             public void onClick(View v) {
                 finish();
             }
         });
+        // 设置右边菜单的点击事件
+        rightView.setText(R.string.login_title);
+        rightView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, UserLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         phoneTv = (TextView) this.findViewById(R.id.phone_text_view);
         randCodeTv = (TextView) this.findViewById(R.id.code_text_view);
         //提交验证的绑定事件
@@ -60,11 +76,17 @@ public class RegisterActivity extends AbActivity{
                 }
                 String randCode = randCodeTv.getText().toString().trim();
                 if("".equals(randCode)) {
-                    AbToastUtil.showToast(mContext, R.string.register_phone_send_hint);
+                    AbToastUtil.showToast(mContext, R.string.register_randCode_send_hint);
+                    return;
+                }
+                if(!isChecked) {
+                    AbToastUtil.showToast(mContext, R.string.register_xieyi);
                     return;
                 }
                 //做点验证验证码的事情吧
-                AbToastUtil.showToast(mContext, "还没来得及写呢");
+                Intent intent = new Intent();
+                intent.setClass(mContext, RegisterSubmitActivity.class);
+                startActivity(intent);
             }
         });
         sendRandCodeBtn = (Button) this.findViewById(R.id.send_randCode);
@@ -79,6 +101,37 @@ public class RegisterActivity extends AbActivity{
                 }
                 //发送验证码吧
                 get2Code();
+            }
+        });
+        //点击清空手机号
+        this.findViewById(R.id.clear_phone_text).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                phoneTv.setText("");
+            }
+        });
+
+        xieyiImageV = (ImageView) this.findViewById(R.id.xieyi_icon);
+        //协议条的checkbox框的选中事件
+        this.findViewById(R.id.xieyi_layout_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isChecked) {
+                    isChecked = false;
+                    xieyiImageV.setImageResource(R.drawable.icon_choice_n);
+                }else {
+                    isChecked = true;
+                    xieyiImageV.setImageResource(R.drawable.icon_choice_h);
+                }
+            }
+        });
+        //查看用户协议内容
+        this.findViewById(R.id.xieyi_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, UserAgreementActivity.class);
+                startActivity(intent);
             }
         });
     }

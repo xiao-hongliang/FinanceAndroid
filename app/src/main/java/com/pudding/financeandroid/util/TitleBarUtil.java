@@ -2,7 +2,10 @@ package com.pudding.financeandroid.util;
 
 import android.content.Context;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
@@ -91,13 +94,25 @@ public class TitleBarUtil {
         mAbTitleBar.setTitleBarHeight(96);
 //        mAbTitleBar.setLogo(R.drawable.button_selector_back);
         mAbTitleBar.setLogo(R.drawable.icon_left);
+		mAbTitleBar.setPadding(50, 0, 0, 0);
         mAbTitleBar.setTitleBarBackground(R.color.title_bg);
         mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
         //mAbTitleBar.setLogoLine(R.drawable.line);
         mAbTitleBar.setTitleBarGravity(Gravity.CENTER,Gravity.CENTER);//设置文字对齐方式
 		// mAbTitleBar.setVisibility(View.GONE);
-		// 设置AbTitleBar在最上 
+		// 设置AbTitleBar在最上
 	}
+
+	public TextView setActivityTitleBarAndRight(AbTitleBar mAbTitleBar, int resId, Context mContext, int rightLayout) {
+		// 添加右边操作按钮
+		mAbTitleBar.clearRightView();
+		LayoutInflater mInflater = LayoutInflater.from(mContext);
+		View rightViewList = mInflater.inflate(rightLayout, null);
+		mAbTitleBar.addRightView(rightViewList);
+		setActivityTitleBarBack(mAbTitleBar, resId);
+		return (TextView) rightViewList.findViewById(R.id.Button_Home_rigth_list);
+	}
+
 
 }
 

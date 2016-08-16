@@ -23,7 +23,7 @@
             android:layout_centerVertical="true"/>
 
         <EditText
-            android:id="@+id/phone_text_view"
+            android:id="@+id/login_phone_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_reg"
@@ -61,90 +61,34 @@
             android:layout_centerVertical="true"/>
 
         <EditText
-            android:id="@+id/code_text_view"
+            android:id="@+id/login_pwd_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_code_reg"
             android:layout_marginLeft="5dp"
             android:textColor="@color/font_9"
             android:textColorHint="@color/font_9"
-            android:hint="@string/register_code_hint"/>
+            android:hint="@string/login_pwd_hint"/>
 
-        <Button
-            android:id="@+id/send_randCode"
+        <ImageView
+            android:id="@+id/clear_login_pwd"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:textColor="@color/white"
-            android:text="@string/register_code_send"
-            android:background="@drawable/linzi_button_yzm"
-            android:textSize="16sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_off"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"/>
 
     </RelativeLayout>
 
     <Button
-        android:id="@+id/submit_register_btn"
+        android:id="@+id/submit_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/linzi_button_red"
-        android:text="@string/register_confirm"
+        android:text="@string/login_title"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="20dp">
-
-        <LinearLayout
-            android:id="@+id/xieyi_layout_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/xieyi_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_choice_h"
-                android:layout_marginRight="2dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="我已阅读并同意"
-                android:layout_marginTop="2dp"
-                android:textSize="16sp"
-                android:textColor="@color/font_9"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/xieyi_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="《耀联投资》"
-            android:layout_marginTop="2dp"
-            android:textSize="16sp"
-            android:textColor="@color/font_blue_5"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="用户协议"
-            android:layout_marginTop="2dp"
-            android:textSize="16sp"
-            android:textColor="@color/font_9"/>
-
-    </LinearLayout>
-
 </LinearLayout>
