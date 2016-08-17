@@ -69,15 +69,6 @@ public class MainActivity extends AbFragmentActivity {
                 }
             }
         });
-
-//        this.findViewById(R.id.register_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setClass(MainActivity.this, RegisterActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     private class MyAdapter extends IndicatorViewPager.IndicatorFragmentPagerAdapter {

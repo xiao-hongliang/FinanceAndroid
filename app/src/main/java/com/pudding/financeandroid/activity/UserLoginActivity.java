@@ -97,5 +97,14 @@ public class UserLoginActivity extends AbActivity{
                 startActivity(intent);
             }
         });
+        //注册新用户
+        this.findViewById(R.id.login_to_register).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

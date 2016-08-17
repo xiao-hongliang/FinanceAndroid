@@ -37,6 +37,13 @@
     <string name="daikuan_title_name">贷款产品</string>
     <string name="company_title_name">公司介绍</string>
     <string name="user_title_name">个人中心</string>
+
+    <string name="gridView_name_1">新手体验</string>
+    <string name="gridView_name_2">理财产品</string>
+    <string name="gridView_name_3">预约理财</string>
+    <string name="gridView_name_4">预约贷款</string>
+    <string name="gridView_name_5">推荐有礼</string>
+    <string name="gridView_name_6">公司简介</string>
     <!-- 首页标题页面end -->
 
 </resources>

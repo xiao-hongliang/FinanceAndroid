@@ -4,9 +4,38 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.pudding.financeandroid.view.ImageCycleView
+            android:id="@+id/ad_view"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/fragment_mainTab_item_progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- 九宫格 -->
+    <com.pudding.financeandroid.view.MyGridView
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="这是首页"/>
+        android:layout_marginTop="10dp"
+        android:horizontalSpacing="0.0dip"
+        android:listSelector="@null"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="0.0dip"
+        android:visibility="visible" />
 
 </LinearLayout>
