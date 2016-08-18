@@ -56,5 +56,7 @@
     <string name="user_center_logout">退出登录</string>
     <!-- 个人中心页面end -->
     <!-- 我的订单页面start -->
+    <string name="my_order_liCai">我的理财</string>
+    <string name="my_order_daiKuan">我的贷款</string>
     <!-- 我的订单页面end -->
 </resources>

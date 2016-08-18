@@ -1,6 +1,7 @@
 package com.pudding.financeandroid.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.activity.MainActivity;
+import com.pudding.financeandroid.activity.MyOrderActivity;
 import com.pudding.financeandroid.util.SPUtils;
 import com.shizhefei.fragment.LazyFragment;
 
@@ -63,12 +65,13 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent();
         switch(v.getId()) {
             case R.id.user_logout_btn:
                 AbToastUtil.showToast(mContext, "退出登陆哦");
                 break;
             case R.id.user_center_layout_1:
-                AbToastUtil.showToast(mContext, R.string.user_center_1);
+                intent.setClass(mContext, MyOrderActivity.class);
                 break;
             case R.id.user_center_layout_2:
                 AbToastUtil.showToast(mContext, R.string.user_center_2);
@@ -86,6 +89,6 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
                 AbToastUtil.showToast(mContext, R.string.user_center_6);
                 break;
         }
-
+        startActivity(intent);
     }
 }
