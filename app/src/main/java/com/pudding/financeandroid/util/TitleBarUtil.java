@@ -98,18 +98,27 @@ public class TitleBarUtil {
 		setActivityTitleBar(mAbTitleBar, resId);
 		return rightViewList;
 	}
-	
-	public void setActivityTitleBarBack(AbTitleBar mAbTitleBar,int resId)
-	{ 
+
+	public void setActivityTitleBarBack(AbTitleBar mAbTitleBar,String resId) {
+		mAbTitleBar.setTitleText(resId);
+		setActivityTitleBar(mAbTitleBar);
+	}
+
+	public void setActivityTitleBarBack(AbTitleBar mAbTitleBar, int resId)
+	{
         mAbTitleBar.setTitleText(resId);
-        mAbTitleBar.setTitleBarHeight(96);
+		setActivityTitleBar(mAbTitleBar);
+	}
+
+	private void setActivityTitleBar(AbTitleBar mAbTitleBar) {
+		mAbTitleBar.setTitleBarHeight(96);
 //        mAbTitleBar.setLogo(R.drawable.button_selector_back);
-        mAbTitleBar.setLogo(R.drawable.icon_left);
+		mAbTitleBar.setLogo(R.drawable.icon_left);
 		mAbTitleBar.setPadding(50, 0, 0, 0);
-        mAbTitleBar.setTitleBarBackground(R.color.title_bg);
-        mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
-        //mAbTitleBar.setLogoLine(R.drawable.line);
-        mAbTitleBar.setTitleBarGravity(Gravity.CENTER,Gravity.CENTER);//设置文字对齐方式
+		mAbTitleBar.setTitleBarBackground(R.color.title_bg);
+		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
+		//mAbTitleBar.setLogoLine(R.drawable.line);
+		mAbTitleBar.setTitleBarGravity(Gravity.CENTER,Gravity.CENTER);//设置文字对齐方式
 		// mAbTitleBar.setVisibility(View.GONE);
 		// 设置AbTitleBar在最上
 	}

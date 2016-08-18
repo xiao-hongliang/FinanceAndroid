@@ -5,10 +5,118 @@
               android:layout_height="match_parent"
               android:background="@color/page_bg">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/financing_item"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我的理财"
-        android:textColor="@color/font_3"/>
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingTop="15dp"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="云南白药供应链贷款-12M09979号"
+            android:textSize="18sp"
+            android:textColor="@color/font_3"
+            android:layout_marginLeft="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="年化收益：12.93%"
+                android:textColor="@color/font_6"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="起投金额：￥100.00"
+                android:textColor="@color/font_6"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="投资期限：1个月"
+                android:textColor="@color/font_6"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="购买份数：X5"
+                android:textColor="@color/font_6"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/page_bg"
+            android:layout_marginTop="15dp"/>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <TextView
+                android:id="@+id/price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_bg"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="200.00"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/price_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textColor="@color/title_bg"
+                android:layout_toLeftOf="@+id/price_tv"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="投资总额"
+                android:textColor="@color/title_bg"
+                android:layout_toLeftOf="@+id/price_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
