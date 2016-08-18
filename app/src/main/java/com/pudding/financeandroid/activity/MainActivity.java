@@ -30,6 +30,7 @@ public class MainActivity extends AbFragmentActivity {
 
     private Context mContext;
     private MyApplication myApplication;
+    public IndicatorViewPager indicatorViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends AbFragmentActivity {
 
         SViewPager viewPager = (SViewPager) findViewById(R.id.tabmain_viewPager);
         Indicator indicator = (Indicator) findViewById(R.id.tabmain_indicator);
-        IndicatorViewPager indicatorViewPager = new IndicatorViewPager(indicator, viewPager);
+        indicatorViewPager = new IndicatorViewPager(indicator, viewPager);
         indicatorViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         // 禁止viewpager的滑动事件
         viewPager.setCanScroll(true);

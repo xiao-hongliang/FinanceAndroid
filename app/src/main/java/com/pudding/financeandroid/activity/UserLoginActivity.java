@@ -10,6 +10,7 @@ import com.ab.activity.AbActivity;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.util.SPUtils;
 import com.pudding.financeandroid.util.TitleBarUtil;
 
 /**
@@ -71,6 +72,7 @@ public class UserLoginActivity extends AbActivity{
                 }
                 //可以进行登陆了
                 AbToastUtil.showToast(mContext, "可以进行登陆了");
+                SPUtils.put(mContext, "phone", phone);
             }
         });
 

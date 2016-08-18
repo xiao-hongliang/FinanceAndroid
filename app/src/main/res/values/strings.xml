@@ -45,5 +45,16 @@
     <string name="gridView_name_5">推荐有礼</string>
     <string name="gridView_name_6">公司简介</string>
     <!-- 首页标题页面end -->
-
+    <!-- 个人中心页面start -->
+    <string name="user_center_1">我的订单</string>
+    <string name="user_center_1_right">查看全部订单</string>
+    <string name="user_center_2">我的收益</string>
+    <string name="user_center_3">投资申请</string>
+    <string name="user_center_4">贷款申请</string>
+    <string name="user_center_5">修改密码</string>
+    <string name="user_center_6">联系客服</string>
+    <string name="user_center_logout">退出登录</string>
+    <!-- 个人中心页面end -->
+    <!-- 我的订单页面start -->
+    <!-- 我的订单页面end -->
 </resources>
