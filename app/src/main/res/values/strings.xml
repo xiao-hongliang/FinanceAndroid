@@ -59,4 +59,9 @@
     <string name="my_order_liCai">我的理财</string>
     <string name="my_order_daiKuan">我的贷款</string>
     <!-- 我的订单页面end -->
+    <string name="apply_invest">申请信息</string>
+    <string name="apply_invest_name">请输入您的姓名</string>
+    <string name="apply_invest_phone">请输入您的电话号码</string>
+    <string name="apply_invest_idCard">请输入您的身份证号码</string>
+    <string name="apply_invest_num">请输入购买的分数</string>
 </resources>
