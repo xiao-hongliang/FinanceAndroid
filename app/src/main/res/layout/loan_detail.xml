@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/loan_item_logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_fd"/>
+
+            <View
+                android:id="@+id/line_item"
+                android:layout_width="3px"
+                android:layout_height="70dp"
+                android:background="@color/page_bg"
+                android:layout_toRightOf="@+id/loan_item_logo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/line_item"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/loan_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/font_3"
+                    android:textSize="18sp"
+                    android:text="房贷"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="银行月利率"
+                        android:textColor="@color/font_lose_c"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/loan_item_month_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/title_bg"
+                        android:textSize="24sp"
+                        android:text="0.50%-0.60%"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:background="@color/white"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_top"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="贷款信息"
+                android:textColor="@color/title_bg"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/page_bg"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/loan_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="内容区"
+            android:textColor="@color/font_3"
+            android:padding="15dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/page_bg"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/tel_server"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_tel"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="2dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="客服"
+                    android:textSize="14sp"
+                    android:textColor="@color/title_bg"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_computer"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="2dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收益计算器"
+                    android:textSize="14sp"
+                    android:textColor="@color/title_bg"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <TextView
+                    android:id="@+id/apply_loan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="申请贷款"
+                    android:background="@drawable/shape_corners_all"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

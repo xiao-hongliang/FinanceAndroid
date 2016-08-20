@@ -88,12 +88,12 @@ public class HomeFragment extends LazyFragment{
      */
     private void initGuidView() {
         List<ApplicationBean> beanList = new ArrayList<>(6);
-        beanList.add(new ApplicationBean(R.string.gridView_name_1, R.drawable.gridview_1, R.color.white));
-        beanList.add(new ApplicationBean(R.string.gridView_name_2, R.drawable.gridview_2, R.color.title_bg));
-        beanList.add(new ApplicationBean(R.string.gridView_name_3, R.drawable.gridview_3, R.color.font_9));
-        beanList.add(new ApplicationBean(R.string.gridView_name_4, R.drawable.gridview_4, R.color.lightyellow));
-        beanList.add(new ApplicationBean(R.string.gridView_name_5, R.drawable.gridview_5, R.color.bisque));
-        beanList.add(new ApplicationBean(R.string.gridView_name_6, R.drawable.gridview_6, R.color.pink));
+        beanList.add(new ApplicationBean(R.string.gridView_name_1, R.drawable.gridview_1, R.color.home_tab_1));
+        beanList.add(new ApplicationBean(R.string.gridView_name_2, R.drawable.gridview_2, R.color.home_tab_2));
+        beanList.add(new ApplicationBean(R.string.gridView_name_3, R.drawable.gridview_3, R.color.home_tab_3));
+        beanList.add(new ApplicationBean(R.string.gridView_name_4, R.drawable.gridview_4, R.color.home_tab_4));
+        beanList.add(new ApplicationBean(R.string.gridView_name_5, R.drawable.gridview_5, R.color.home_tab_5));
+        beanList.add(new ApplicationBean(R.string.gridView_name_6, R.drawable.gridview_6, R.color.home_tab_6));
 
         homeAdapter = new HomeGridAdapter(mContext, beanList);
         gridview.setAdapter(homeAdapter);

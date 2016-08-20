@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg">
+
+    <EditText
+        android:id="@+id/loan_name"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/feedbackcont"
+        android:hint="@string/apply_invest_name"
+        android:textColor="@color/font_6"
+        android:textColorHint="@color/font_9"
+        android:textSize="16sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/loan_phone"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/feedbackcont"
+        android:textColor="@color/font_6"
+        android:hint="@string/apply_invest_phone"
+        android:textColorHint="@color/font_9"
+        android:textSize="16sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <EditText
+        android:id="@+id/loan_idCard"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/feedbackcont"
+        android:textColor="@color/font_6"
+        android:hint="@string/apply_invest_idCard"
+        android:textColorHint="@color/font_9"
+        android:textSize="16sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <EditText
+        android:id="@+id/loan_price"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/feedbackcont"
+        android:textColor="@color/font_6"
+        android:hint="@string/apply_loan_price"
+        android:textColorHint="@color/font_9"
+        android:textSize="16sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/font_6"
+            android:text="请准确填写您的信息，我们会在"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/title_bg"
+            android:text="3个工作日"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/font_6"
+            android:text="内联系您!"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit_apply_loan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/linzi_button_red"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"/>
+
+</LinearLayout>

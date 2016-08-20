@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/page_bg"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
+
+        <ImageView
+            android:id="@+id/loan_item_logo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_fd"/>
+
+        <View
+            android:id="@+id/line_item"
+            android:layout_width="3px"
+            android:layout_height="70dp"
+            android:background="@color/page_bg"
+            android:layout_toRightOf="@+id/loan_item_logo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/line_item"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:id="@+id/loan_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/font_3"
+                android:textSize="18sp"
+                android:text="房贷"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="银行月利率"
+                    android:textColor="@color/font_lose_c"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/loan_item_month_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/title_bg"
+                    android:textSize="24sp"
+                    android:text="0.50%-0.60%"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loan_item_type_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="急速房贷"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/shape_corners_loan_item"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

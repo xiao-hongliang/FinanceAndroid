@@ -63,5 +63,6 @@
     <string name="apply_invest_name">请输入您的姓名</string>
     <string name="apply_invest_phone">请输入您的电话号码</string>
     <string name="apply_invest_idCard">请输入您的身份证号码</string>
-    <string name="apply_invest_num">请输入购买的分数</string>
+    <string name="apply_invest_num">请输入购买的份数</string>
+    <string name="apply_loan_price">请输入您的贷款金额</string>
 </resources>
