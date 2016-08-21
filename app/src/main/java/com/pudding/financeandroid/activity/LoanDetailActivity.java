@@ -5,23 +5,26 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.image.AbImageLoader;
-import com.ab.util.AbDialogUtil;
 import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.LoanBean;
+import com.pudding.financeandroid.bean.LoanContentBean;
 import com.pudding.financeandroid.response.LoanDetailResponse;
-import com.pudding.financeandroid.response.LoanListResponse;
 import com.pudding.financeandroid.util.TitleBarUtil;
+
+import java.util.List;
 
 /**
  * 贷款详情页面
@@ -36,6 +39,7 @@ public class LoanDetailActivity extends AbActivity{
     /** 连接对象 */
     private RequestImpl ri = null;
     private String phone = "";
+    private LoanBean loanBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +50,9 @@ public class LoanDetailActivity extends AbActivity{
         AbTitleBar mAbTitleBar = this.getTitleBar();
 
         Intent intent = this.getIntent();
-        LoanBean loanBean = (LoanBean) intent.getSerializableExtra("bean");
+        loanBean = (LoanBean) intent.getSerializableExtra("bean");
         this.mAbImageLoader = AbImageLoader.getInstance(mContext);
+        ri = new RequestImpl(mContext);
 
         String title = loanBean.getName();
         new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, title);
@@ -78,6 +83,7 @@ public class LoanDetailActivity extends AbActivity{
             public void onClick(View v) {
                 Intent applyIntent = new Intent();
                 applyIntent.setClass(mContext, ApplyLoanActivity.class);
+                applyIntent.putExtra("productId", loanBean.getId());
                 startActivity(applyIntent);
             }
         });
@@ -90,20 +96,35 @@ public class LoanDetailActivity extends AbActivity{
         ((TextView)this.findViewById(R.id.loan_item_month_rate)).setText(loanBean.getMonthRateInfo());
         this.phone = loanBean.getPhone();
 
-//        ((TextView)this.findViewById(R.id.loan_content)).setText(loanBean.getContent());
+        //迭代加载显示贷款详情的内容
+        LinearLayout contentView = (LinearLayout) this.findViewById(R.id.loan_content);
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        List<LoanContentBean> contentBeanList = loanBean.getRichTextContent();
+        for(LoanContentBean contentBean : contentBeanList) {
+            if("img".equals(contentBean.getType())) {
+                ImageView imageView = (ImageView) mInflater.inflate(R.layout.loan_detail_img, null);
+                mAbImageLoader.display(imageView, contentBean.getContent());
+                contentView.addView(imageView);
+            }else {
+                TextView textView = (TextView) mInflater.inflate(R.layout.loan_detail_text, null);
+                textView.setText(contentBean.getContent());
+                contentView.addView(textView);
+            }
+        }
     }
 
-    private void httpPost(int loanId) {
+    private void httpPost(String loanId) {
         ri.loanDetail(loanId, new AbStringHttpResponseListener() {
             // 开始执行前
             @Override
             public void onStart() {
                 // 显示进度框
-                 AbDialogUtil.showProgressDialog(mContext, 0, "正在获取数据...");
+//                 AbDialogUtil.showProgressDialog(mContext, 0, "正在获取数据...");
             }
             // 完成后调用，失败，成功
             @Override
             public void onFinish() {
+//                AbDialogUtil.removeDialog(mContext);
                 Log.d(TAG, "onFinish");
             }
             // 失败，调用
@@ -118,7 +139,6 @@ public class LoanDetailActivity extends AbActivity{
                     LoanDetailResponse bean = (LoanDetailResponse) AbJsonUtil.fromJson(content, LoanDetailResponse.class);
                     // 验证成功
                     if (bean.getSuccess()) {
-//                        AbToastUtil.showToast(mContext, "数据获取成功!");
                         //加载贷款详情数据
                         if(bean.getData() != null){
                             setDetailView(bean.getData());

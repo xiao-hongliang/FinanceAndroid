@@ -65,4 +65,5 @@
     <string name="apply_invest_idCard">请输入您的身份证号码</string>
     <string name="apply_invest_num">请输入购买的份数</string>
     <string name="apply_loan_price">请输入您的贷款金额</string>
+    <string name="apply_loan_stage_list">请选择分期</string>
 </resources>

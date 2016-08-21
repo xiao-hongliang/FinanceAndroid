@@ -1,6 +1,7 @@
 package com.pudding.financeandroid.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 贷款列表的数据bean
@@ -11,21 +12,21 @@ public class LoanBean implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private String id;
     private String logo;
     private String name;
     private LoanTypeBean loanType;
     //月利率
     private String monthRateInfo;
     //贷款详情内容
-    private LoanContentBean richTextContent;
+    private List<LoanContentBean> richTextContent;
     private String phone;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -61,11 +62,11 @@ public class LoanBean implements Serializable{
         this.loanType = loanType;
     }
 
-    public LoanContentBean getRichTextContent() {
+    public List<LoanContentBean> getRichTextContent() {
         return richTextContent;
     }
 
-    public void setRichTextContent(LoanContentBean richTextContent) {
+    public void setRichTextContent(List<LoanContentBean> richTextContent) {
         this.richTextContent = richTextContent;
     }
 

@@ -20,5 +20,11 @@ public class BaseApi {
 	public  String loan_list = "finance/loan/list";
 	/** 贷款详情 */
 	public  String loan_detail = "finance/loan/detail";
+	/** 申请贷款期限列表 */
+	public  String loan_stage_list = "finance/loan/stageList";
+	/** 申请贷款的提交 */
+	public  String loan_apply_submit = "finance/loan/apply/submit";
+	/** 用户登录 */
+	public  String user_login = "finance/user/login";
 
 }
