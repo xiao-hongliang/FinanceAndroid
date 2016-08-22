@@ -104,8 +104,7 @@ public class UserLoginActivity extends AbActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(mContext, RegisterActivity.class);
-                intent.putExtra("sourceType", "forgetPwd");
+                intent.setClass(mContext, ForgetPwdActivity.class);
                 startActivity(intent);
             }
         });

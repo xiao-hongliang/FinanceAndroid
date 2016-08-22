@@ -26,5 +26,13 @@ public class BaseApi {
 	public  String loan_apply_submit = "finance/loan/apply/submit";
 	/** 用户登录 */
 	public  String user_login = "finance/user/login";
+	/** 发送手机号短信验证码 */
+	public  String send_randCode = "finance/user/sendMessage";
+	/** 用户注册 */
+	public  String user_register = "finance/user/register";
+	/** 发送手机号短信验证码-找回密码 */
+	public  String send_randCode_forget_pwd = "finance/user/findMessage";
+	/** 用户重置密码 */
+	public  String user_forget_pwd = "finance/user/find-password";
 
 }

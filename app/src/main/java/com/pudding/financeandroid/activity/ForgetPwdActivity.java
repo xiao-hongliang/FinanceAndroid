@@ -23,49 +23,33 @@ import com.pudding.financeandroid.response.CommonResponse;
 import com.pudding.financeandroid.util.TitleBarUtil;
 
 /**
- * 注册页面的activity
+ * 忘记密码页面的activity
  *
  * Created by xiaohongliang on 2016/8/15.
  */
-public class RegisterActivity extends AbActivity{
-    private static final String TAG = RegisterActivity.class.getName();
+public class ForgetPwdActivity extends AbActivity{
+    private static final String TAG = ForgetPwdActivity.class.getName();
     private Context mContext;
     private TextView phoneTv;
     private TextView randCodeTv;
     private TextView pwdFirstTv;
     private TextView pwdSecondTv;
-    //推荐人手机号码
-    private TextView referrerMobileTv;
     private Button sendRandCodeBtn;
-    private ImageView xieyiImageV;
     private int codeTime = 5;// 发送短信默认时间
     private int time = 1000;
-    //是否选中了协议
-    private Boolean isChecked = true;
     /** 连接对象 */
     private RequestImpl ri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setAbContentView(R.layout.register);
+        setAbContentView(R.layout.forget_pwd);
         setStatusBar(R.color.title_bg);
-        mContext = RegisterActivity.this;
+        mContext = ForgetPwdActivity.this;
         ri = new RequestImpl(mContext);
 
         AbTitleBar mAbTitleBar = this.getTitleBar();
-        TextView rightView = new TitleBarUtil(mContext).setActivityTitleBarAndRight(mAbTitleBar, R.string.register,
-                mContext, R.layout.ico_home_right_list);
-        // 设置右边菜单的点击事件
-        rightView.setText(R.string.login_title);
-        rightView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(mContext, UserLoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.forgetPwd_title);
         //设置AbTitleBar在最上
         this.setTitleBarOverlay(false);
         mAbTitleBar.getLogoView().setOnClickListener(new View.OnClickListener() {
@@ -80,7 +64,6 @@ public class RegisterActivity extends AbActivity{
         randCodeTv = (TextView) this.findViewById(R.id.code_text_view);
         pwdFirstTv = (TextView) this.findViewById(R.id.password_first);
         pwdSecondTv = (TextView) this.findViewById(R.id.password_second);
-        referrerMobileTv = (TextView) this.findViewById(R.id.recommend_text_view);
         //提交验证的绑定事件
         this.findViewById(R.id.submit_register_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,13 +92,8 @@ public class RegisterActivity extends AbActivity{
                     AbToastUtil.showToast(mContext, R.string.register_pwd_disagree);
                     return;
                 }
-                if(!isChecked) {
-                    AbToastUtil.showToast(mContext, R.string.register_xieyi);
-                    return;
-                }
-                //直接提交注册吧
-                UserRegisterForm form = new UserRegisterForm("", randCode, phone, firstPwd,
-                        referrerMobileTv.getText().toString());
+                //重置密码吧
+                UserRegisterForm form = new UserRegisterForm("", randCode, phone, firstPwd);
                 sendRegisterPost(form);
             }
         });
@@ -152,37 +130,6 @@ public class RegisterActivity extends AbActivity{
             @Override
             public void onClick(View v) {
                 pwdSecondTv.setText("");
-            }
-        });
-        //点击清空推荐人手机号码
-        this.findViewById(R.id.clear_recommend_phone).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                referrerMobileTv.setText("");
-            }
-        });
-
-        xieyiImageV = (ImageView) this.findViewById(R.id.xieyi_icon);
-        //协议条的checkbox框的选中事件
-        this.findViewById(R.id.xieyi_layout_view).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isChecked) {
-                    isChecked = false;
-                    xieyiImageV.setImageResource(R.drawable.icon_choice_n);
-                }else {
-                    isChecked = true;
-                    xieyiImageV.setImageResource(R.drawable.icon_choice_h);
-                }
-            }
-        });
-        //查看用户协议内容
-        this.findViewById(R.id.xieyi_content).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(mContext, UserAgreementActivity.class);
-                startActivity(intent);
             }
         });
     }
@@ -229,7 +176,7 @@ public class RegisterActivity extends AbActivity{
     }
 
     private void sendRandCodePost(String mobile) {
-        ri.sendRandCode(mobile, new AbStringHttpResponseListener() {
+        ri.sendRandCodeForForgetPwd(mobile, new AbStringHttpResponseListener() {
             // 开始执行前
             @Override
             public void onStart() {
@@ -267,7 +214,7 @@ public class RegisterActivity extends AbActivity{
     }
 
     private void sendRegisterPost(UserRegisterForm form) {
-        ri.userRegister(form, new AbStringHttpResponseListener() {
+        ri.userForgetPwd(form, new AbStringHttpResponseListener() {
             // 开始执行前
             @Override
             public void onStart() {
@@ -292,7 +239,7 @@ public class RegisterActivity extends AbActivity{
                     CommonResponse bean = (CommonResponse) AbJsonUtil.fromJson(content, CommonResponse.class);
                     // 验证成功
                     if (bean.getSuccess()) {
-                        AbToastUtil.showToast(mContext, "注册成功");
+                        AbToastUtil.showToast(mContext, "重置密码成功");
                         Intent intent = new Intent();
                         intent.setClass(mContext, UserLoginActivity.class);
                         startActivity(intent);

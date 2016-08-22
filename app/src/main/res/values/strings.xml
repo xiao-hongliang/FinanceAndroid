@@ -3,6 +3,7 @@
     <!-- 注册页面start -->
     <string name="register">注册新用户</string>
     <string name="register_phone">手机号</string>
+    <string name="recommend_phone">填写推荐人手机号(可不填写)</string>
     <string name="register_confirm">提交验证码</string>
     <string name="register_code_hint">请输入短信验证码</string>
     <string name="register_code_send">发送验证码</string>

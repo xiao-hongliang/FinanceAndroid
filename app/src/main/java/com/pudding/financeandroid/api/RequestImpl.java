@@ -7,6 +7,7 @@ import com.ab.http.AbRequestParams;
 import com.ab.http.AbStringHttpResponseListener;
 import com.pudding.financeandroid.form.LoanApplyForm;
 import com.pudding.financeandroid.form.UserLoginForm;
+import com.pudding.financeandroid.form.UserRegisterForm;
 
 /**
  * 请求结果封装
@@ -78,6 +79,41 @@ public class RequestImpl {
 		params.put("userName", form.getUserName());
 		params.put("password", form.getPassword());
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_login, params, responseListener);
+	}
+
+	//发送手机验证码
+	public void sendRandCode(String mobile, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("mobile", mobile);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.send_randCode, params, responseListener);
+	}
+
+	//提交用户注册
+	public void userRegister(UserRegisterForm form, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("pushId", form.getPushId());
+		params.put("code", form.getCode());
+		params.put("mobile", form.getMobile());
+		params.put("password", form.getPassword());
+		params.put("referrerMobile", form.getReferrerMobile());
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_register, params, responseListener);
+	}
+
+	//发送手机验证码
+	public void sendRandCodeForForgetPwd(String mobile, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("mobile", mobile);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.send_randCode_forget_pwd, params, responseListener);
+	}
+
+	//提交申请贷款
+	public void userForgetPwd(UserRegisterForm form, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("pushId", form.getPushId());
+		params.put("code", form.getCode());
+		params.put("mobile", form.getMobile());
+		params.put("password", form.getPassword());
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_forget_pwd, params, responseListener);
 	}
 
 }
