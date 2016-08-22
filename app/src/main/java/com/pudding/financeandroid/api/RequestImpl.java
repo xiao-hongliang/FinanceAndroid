@@ -116,4 +116,12 @@ public class RequestImpl {
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_forget_pwd, params, responseListener);
 	}
 
+	//提交修改密码
+	public void updateUserPwd(String oldPwd, String newPwd, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("oldPass", oldPwd);
+		params.put("newPass", newPwd);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_update_pwd, params, responseListener);
+	}
+
 }

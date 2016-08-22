@@ -72,8 +72,13 @@ public class LoanDetailActivity extends AbActivity{
         this.findViewById(R.id.tel_server).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent phoneIntent = new Intent( "android.intent.action.CALL", Uri.parse("tel:"+ phone));
-            startActivity(phoneIntent);
+                //直接拨号
+                Intent phoneIntent = new Intent( "android.intent.action.CALL", Uri.parse("tel:"+ phone));
+                startActivity(phoneIntent);
+                //先打开拨号界面
+//                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
             }
         });
 

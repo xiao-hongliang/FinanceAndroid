@@ -7,12 +7,48 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@color/white"
-        android:layout_marginTop="25dp"
-        android:paddingTop="10dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="15dp"
-        android:paddingBottom="5dp"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:id="@+id/img_old_pwd_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_key"
+            android:layout_centerVertical="true"/>
+
+        <EditText
+            android:id="@+id/password_old"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/register_input"
+            android:inputType="textPassword"
+            android:layout_toRightOf="@id/img_old_pwd_icon"
+            android:textColor="@color/font_6"
+            android:textColorHint="@color/font_9"
+            android:hint="@string/update_pwd_old_hint"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"/>
+
+        <ImageView
+            android:id="@+id/clear_pwd_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_off"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="15dp"
         android:paddingRight="15dp">
 
         <ImageView
@@ -25,14 +61,15 @@
         <EditText
             android:id="@+id/password_first"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/register_input"
             android:inputType="textPassword"
             android:layout_toRightOf="@id/img_reg_submit"
-            android:layout_alignRight="@+id/clear_pwd_first_submit"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/font_9"
+            android:textColor="@color/font_6"
             android:textColorHint="@color/font_9"
-            android:hint="@string/register_pwd_first_hint"/>
+            android:hint="@string/register_pwd_first_hint"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"/>
 
         <ImageView
             android:id="@+id/clear_pwd_first_submit"
@@ -46,12 +83,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@color/white"
-        android:layout_marginTop="25dp"
-        android:paddingTop="10dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="15dp"
-        android:paddingBottom="5dp"
         android:paddingRight="15dp">
 
         <ImageView
@@ -64,14 +99,15 @@
         <EditText
             android:id="@+id/password_second"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/register_input"
             android:inputType="textPassword"
             android:layout_toRightOf="@id/img_reg"
-            android:layout_alignRight="@+id/clear_pwd_second_submit"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/font_9"
+            android:textColor="@color/font_6"
             android:textColorHint="@color/font_9"
-            android:hint="@string/register_pwd_second_hint"/>
+            android:hint="@string/register_pwd_second_hint"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"/>
 
         <ImageView
             android:id="@+id/clear_pwd_second_submit"
@@ -88,7 +124,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/linzi_button_red"
-        android:text="@string/register_pwd_submit"
+        android:text="@string/user_center_5"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:layout_marginLeft="20dp"

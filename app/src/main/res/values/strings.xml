@@ -9,6 +9,7 @@
     <string name="register_code_send">发送验证码</string>
     <string name="register_phone_send_hint">请输入手机号码</string>
     <string name="register_randCode_send_hint">请输入短信验证码</string>
+    <string name="update_pwd_old_hint">请输入旧密码</string>
     <string name="register_pwd_first_hint">请输入新密码</string>
     <string name="register_pwd_second_hint">再次输入密码</string>
     <string name="register_pwd_submit">确认</string>

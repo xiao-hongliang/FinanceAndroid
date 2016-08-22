@@ -34,5 +34,7 @@ public class BaseApi {
 	public  String send_randCode_forget_pwd = "finance/user/findMessage";
 	/** 用户重置密码 */
 	public  String user_forget_pwd = "finance/user/find-password";
+	/** 用户修改密码 */
+	public  String user_update_pwd = "finance/user/modify-pass";
 
 }

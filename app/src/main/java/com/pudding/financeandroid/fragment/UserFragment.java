@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.pudding.financeandroid.R;
-import com.pudding.financeandroid.activity.MainActivity;
 import com.pudding.financeandroid.activity.MyOrderActivity;
-import com.pudding.financeandroid.util.SPUtils;
+import com.pudding.financeandroid.activity.UpdateUserPwdActivity;
 import com.shizhefei.fragment.LazyFragment;
 
 /**
@@ -83,7 +81,7 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
                 AbToastUtil.showToast(mContext, R.string.user_center_4);
                 break;
             case R.id.user_center_layout_5:
-                AbToastUtil.showToast(mContext, R.string.user_center_5);
+                intent.setClass(mContext, UpdateUserPwdActivity.class);
                 break;
             case R.id.user_center_layout_6:
                 AbToastUtil.showToast(mContext, R.string.user_center_6);
