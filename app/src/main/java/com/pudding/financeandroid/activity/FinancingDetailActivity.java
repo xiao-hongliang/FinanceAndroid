@@ -107,8 +107,7 @@ public class FinancingDetailActivity extends AbActivity{
         financingYearRate.setText(bean.getYearRateStr());
         //百分比的进度
         TextView financingPercentage = (TextView) this.findViewById(R.id.financing_percentage);
-//        financingName.setText(bean.getYearRateStr());
-
+        financingPercentage.setText(bean.getFinishRateStr());
         TextView financingMinAmount = (TextView) this.findViewById(R.id.financing_minAmount);
         financingMinAmount.setText(bean.getMinAmount());
         TextView financingInterestPolicy = (TextView) this.findViewById(R.id.financing_interestPolicy);

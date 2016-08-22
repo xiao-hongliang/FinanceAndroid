@@ -33,6 +33,8 @@ public class FinancingBean implements Serializable{
     private String maxAmount;
     //还款方式
     private FinancingInterestPolicyBean interestPolicy;
+    //完成进度
+    private String finishRateStr;
 
     public String getId() {
         return id;
@@ -128,5 +130,13 @@ public class FinancingBean implements Serializable{
 
     public void setInterestPolicy(FinancingInterestPolicyBean interestPolicy) {
         this.interestPolicy = interestPolicy;
+    }
+
+    public String getFinishRateStr() {
+        return finishRateStr;
+    }
+
+    public void setFinishRateStr(String finishRateStr) {
+        this.finishRateStr = finishRateStr;
     }
 }
