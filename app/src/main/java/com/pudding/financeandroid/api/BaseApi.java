@@ -36,5 +36,9 @@ public class BaseApi {
 	public  String user_forget_pwd = "finance/user/find-password";
 	/** 用户修改密码 */
 	public  String user_update_pwd = "finance/user/modify-pass";
+	/** 理财列表 */
+	public  String financing_list = "finance/finance/list";
+	/** 理财详情 */
+	public  String financing_detail = "finance/finance/detail";
 
 }

@@ -29,18 +29,6 @@ public class RequestImpl {
 		api = BaseApi.getInstance();
 	}
 
-	public void Login(String phone, String pwd, AbStringHttpResponseListener responseListener) {
-//		AbRequestParams params = new AbRequestParams();
-//		params.put("username", phone);
-//		params.put("password", pwd);
-
-//		long starTime = System.currentTimeMillis();
-//		mAbHttpUtil.post(api.BASE_URL + api.LOGIN, params, responseListener);
-//		long endTime = System.currentTimeMillis();
-//		long Time = endTime - starTime;
-//		MyLog.v("Login", "执行时间:" + Time);
-	}
-
 	//贷款列表
 	public void loanList(AbStringHttpResponseListener responseListener) {
 		mAbHttpUtil.post(BaseApi.BASE_URL + api.loan_list, responseListener);
@@ -122,6 +110,23 @@ public class RequestImpl {
 		params.put("oldPass", oldPwd);
 		params.put("newPass", newPwd);
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_update_pwd, params, responseListener);
+	}
+
+	//理财列表
+	public void financingList(Boolean isNewExperience, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		//是否是加载新手体验的列表数据
+		if(isNewExperience) {
+			params.put("moduleId", "24090440408895901");
+		}
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.financing_list, params, responseListener);
+	}
+
+	//理财详情
+	public void financingDetail(String id, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("id", id);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.financing_detail, params, responseListener);
 	}
 
 }

@@ -36,9 +36,9 @@ public class MyFinancingFragment extends LazyFragment{
         this.findViewById(R.id.financing_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(mContext, FinancingDetailActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(mContext, FinancingDetailActivity.class);
+//                startActivity(intent);
             }
         });
     }

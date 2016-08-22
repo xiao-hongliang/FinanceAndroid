@@ -15,6 +15,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/financing_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="云南白药供应链贷款-12M09979号"
@@ -31,6 +32,7 @@
                 android:layout_marginBottom="15dp">
 
                 <TextView
+                    android:id="@+id/financing_year_rate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -40,6 +42,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:id="@+id/financing_percentage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="64%"
@@ -105,6 +108,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/financing_minAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100元"
@@ -164,6 +168,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/financing_interestPolicy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="一次性还本付息"
@@ -195,6 +200,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/financing_maxAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20.68"
@@ -225,6 +231,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/financing_totalAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="70"
@@ -254,6 +261,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/financing_investTimeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1个月"
@@ -305,13 +313,21 @@
                 android:background="@color/page_bg"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"/>
-            
-            <TextView
+
+            <LinearLayout
+                android:id="@+id/financing_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="内容区"
-                android:textColor="@color/font_3"
-                android:padding="15dp"/>
+                android:orientation="vertical">
+            </LinearLayout>
+            
+            <!--<TextView-->
+                <!--android:id="@+id/financing_content"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="内容区"-->
+                <!--android:textColor="@color/font_3"-->
+                <!--android:padding="15dp"/>-->
 
         </LinearLayout>
         
