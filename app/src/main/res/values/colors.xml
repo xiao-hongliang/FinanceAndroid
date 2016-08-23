@@ -20,6 +20,8 @@
     <color name="home_tab_4">#f2d4d4</color>
     <color name="home_tab_5">#f3efd4</color>
     <color name="home_tab_6">#f8e6fc</color>
+
+    <color name="mainTabOff">#666666</color>
     <!-- 自定义的颜色值end -->
 
 

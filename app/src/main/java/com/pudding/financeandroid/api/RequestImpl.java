@@ -5,6 +5,7 @@ import android.content.Context;
 import com.ab.http.AbHttpUtil;
 import com.ab.http.AbRequestParams;
 import com.ab.http.AbStringHttpResponseListener;
+import com.pudding.financeandroid.form.FinancingApplyForm;
 import com.pudding.financeandroid.form.LoanApplyForm;
 import com.pudding.financeandroid.form.UserLoginForm;
 import com.pudding.financeandroid.form.UserRegisterForm;
@@ -127,6 +128,17 @@ public class RequestImpl {
 		AbRequestParams params = new AbRequestParams();
 		params.put("id", id);
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.financing_detail, params, responseListener);
+	}
+
+	//提交申请贷款
+	public void financingApplySend(FinancingApplyForm form, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("productId", form.getProductId());
+		params.put("name", form.getName());
+		params.put("mobile", form.getMobile());
+		params.put("idNo", form.getIdNo());
+		params.put("count", form.getCount());
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.financing_apply_send, params, responseListener);
 	}
 
 }

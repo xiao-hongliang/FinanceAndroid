@@ -77,11 +77,13 @@ public class FinancingDetailActivity extends AbActivity{
         this.findViewById(R.id.tel_server).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent phoneIntent = new Intent( "android.intent.action.CALL", Uri.parse("tel:"+ phone));
-                startActivity(phoneIntent);
-//                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
+                //直接拨打电话
+//                Intent phoneIntent = new Intent( "android.intent.action.CALL", Uri.parse("tel:"+ phone));
+//                startActivity(phoneIntent);
+                //跳转到拨号界面
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
         //投资购买点击事件绑定
@@ -109,7 +111,7 @@ public class FinancingDetailActivity extends AbActivity{
         TextView financingPercentage = (TextView) this.findViewById(R.id.financing_percentage);
         financingPercentage.setText(bean.getFinishRateStr());
         TextView financingMinAmount = (TextView) this.findViewById(R.id.financing_minAmount);
-        financingMinAmount.setText(bean.getMinAmount());
+        financingMinAmount.setText(bean.getMinAmount()+"");
         TextView financingInterestPolicy = (TextView) this.findViewById(R.id.financing_interestPolicy);
         financingInterestPolicy.setText(bean.getInterestPolicy().getName());
         TextView financingMaxAmount = (TextView) this.findViewById(R.id.financing_maxAmount);
@@ -119,13 +121,23 @@ public class FinancingDetailActivity extends AbActivity{
         TextView financingInvestTimeName = (TextView) this.findViewById(R.id.financing_investTimeName);
         financingInvestTimeName.setText(bean.getInvestTimeName());
 
+        //计算红色进度条的显示值start
+        String finishStr = bean.getFinishRateStr().replace("%", "");
+        String intStr;
+        if(Double.valueOf(finishStr) > 1) {
+            intStr = finishStr.substring(0, finishStr.indexOf("."));
+        }else {
+            intStr = finishStr.substring(finishStr.indexOf(".") + 1, finishStr.length());
+        }
+        int finishInt = Integer.parseInt(intStr);
+        //计算红色进度条的显示值end
 
         percentageLeftTv = (TextView) this.findViewById(R.id.percentage_left);
         percentageRightTv = (TextView) this.findViewById(R.id.percentage_right);
         //LayoutParams参数依次为，宽度，高度，权重占比
-        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(0, 12, (float) 64);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(0, 12, (float) finishInt);
         percentageLeftTv.setLayoutParams(p);
-        LinearLayout.LayoutParams p2 = new LinearLayout.LayoutParams(0, 12, (float) 36);
+        LinearLayout.LayoutParams p2 = new LinearLayout.LayoutParams(0, 12, (float) (100 - finishInt));
         percentageRightTv.setLayoutParams(p2);
 
 

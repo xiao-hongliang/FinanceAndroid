@@ -31,7 +31,7 @@ import java.util.List;
  * Created by xiao.hongliang on 2016/8/20.
  */
 public class ApplyLoanActivity extends AbActivity{
-
+    private static final String TAG = ApplyLoanActivity.class.getName();
     private Context mContext;
     private TextView loanNameTv;
     private TextView loanPhoneTv;
@@ -39,7 +39,6 @@ public class ApplyLoanActivity extends AbActivity{
     private TextView loanPriceTv;
     /** 连接对象 */
     private RequestImpl ri = null;
-    private static final String TAG = ApplyLoanActivity.class.getName();
     private List<LoanStageBean> stageBeen;
     private int chooseBean = 0;
     private String productId;
