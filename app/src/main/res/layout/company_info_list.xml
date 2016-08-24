@@ -5,12 +5,14 @@
     android:orientation="vertical" >
     
     <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/ptrlvMainCont"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:divider="@drawable/divider"
         android:fadingEdge="none"
-        android:smoothScrollbar="true">
+        android:smoothScrollbar="true"
+        ptr:ptrAnimationStyle="flip" >
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </LinearLayout>

@@ -144,7 +144,10 @@ public class RequestImpl {
 	//获取公司栏目的新闻资讯
 	public void companyList(int type, int pageNo, AbStringHttpResponseListener responseListener) {
 		AbRequestParams params = new AbRequestParams();
-		params.put("type", type);
+		//等于0表示全部，不需要传递这个参数
+		if(type != 0) {
+			params.put("type", type);
+		}
 		params.put("pageNo", pageNo);
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.company_list, params, responseListener);
 	}

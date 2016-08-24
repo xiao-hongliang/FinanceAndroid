@@ -66,7 +66,11 @@ public class InfoListAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		InfoBean info = infoBeen.get(position);
-		holder.tvTitle.setText(info.getTitle());
+		if(position == 0) {
+			holder.tvTitle.setText("耀联投资欢迎11界领导视察顺利通过");
+		}else {
+			holder.tvTitle.setText(info.getTitle());
+		}
 		holder.createTime.setText(info.getCreateTimeStr());
 		holder.infoId = info.getId();
 
