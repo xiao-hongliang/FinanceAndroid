@@ -73,4 +73,7 @@
     <string name="company_news">行业新闻</string>
     <string name="company_dongTai">公司动态</string>
     <string name="company_maoYi">贸易公司</string>
+
+    <string name="noData">没有更多啦</string>
+    <string name="netOff">网络未连接</string>
 </resources>

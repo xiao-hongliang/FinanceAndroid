@@ -58,9 +58,9 @@ public class InfoListAdapter extends BaseAdapter {
 		if(convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(listViewItem, null);
 			holder = new ViewHolder();
-			holder.ivLogo = (ImageView) convertView.findViewById(R.id.infoIcon);
-			holder.tvTitle = (TextView) convertView.findViewById(R.id.infoTitle);
-			holder.createTime = (TextView) convertView.findViewById(R.id.infoDate);
+			holder.ivLogo = (ImageView) convertView.findViewById(R.id.info_item_logo);
+			holder.tvTitle = (TextView) convertView.findViewById(R.id.info_item_title);
+			holder.createTime = (TextView) convertView.findViewById(R.id.info_item_createTime);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -89,8 +89,5 @@ public class InfoListAdapter extends BaseAdapter {
 		for(InfoBean info : addInfoBeen) {
 			infoBeen.add(info);
 		}
-	}
-	public void cleanDatas() {
-		infoBeen.clear();
 	}
 }

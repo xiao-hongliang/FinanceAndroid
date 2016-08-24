@@ -141,4 +141,12 @@ public class RequestImpl {
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.financing_apply_send, params, responseListener);
 	}
 
+	//获取公司栏目的新闻资讯
+	public void companyList(int type, int pageNo, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("type", type);
+		params.put("pageNo", pageNo);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.company_list, params, responseListener);
+	}
+
 }

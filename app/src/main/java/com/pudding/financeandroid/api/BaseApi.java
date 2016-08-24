@@ -42,5 +42,7 @@ public class BaseApi {
 	public  String financing_detail = "finance/finance/detail";
 	/** 投资申请提交 */
 	public  String financing_apply_send = "finance/finance/apply/submit";
+	/** 公司模块的资讯申请 */
+	public  String company_list = "finance/info/list";
 
 }
