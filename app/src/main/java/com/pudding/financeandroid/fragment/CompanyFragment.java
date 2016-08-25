@@ -1,6 +1,7 @@
 package com.pudding.financeandroid.fragment;
 
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,7 @@ public class CompanyFragment extends LazyFragment {
     public static final String INTENT_STRING_TABNAME = "intent_String_tabname";
     public static final String INTENT_INT_INDEX = "intent_int_index";
     private TextView tvTabAll, tvTabNews, tvTabDongTai, tvTabMaoYi;
+    private View allLineTv, newsLineTv, dongTaiLineTv, maoYiLineTv;
     private ViewPager mPager;
     private int currIndex = 0;
     private Resources resources;
@@ -42,6 +44,10 @@ public class CompanyFragment extends LazyFragment {
         tvTabNews = (TextView) this.findViewById(R.id.company_news);
         tvTabDongTai = (TextView) this.findViewById(R.id.company_dongTai);
         tvTabMaoYi = (TextView) this.findViewById(R.id.company_maoYi);
+        allLineTv = this.findViewById(R.id.all_tab_line);
+        newsLineTv = this.findViewById(R.id.news_tab_line);
+        dongTaiLineTv = this.findViewById(R.id.dongTai_tab_line);
+        maoYiLineTv = this.findViewById(R.id.maoYi_tab_line);
         tvTabAll.setOnClickListener(new MyOnClickListener(0));
         tvTabNews.setOnClickListener(new MyOnClickListener(1));
         tvTabDongTai.setOnClickListener(new MyOnClickListener(2));
@@ -86,42 +92,74 @@ public class CompanyFragment extends LazyFragment {
                 case 0:
                     if (currIndex == 1) {
                         tvTabNews.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabNews.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        newsLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 2) {
                         tvTabDongTai.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabDongTai.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        dongTaiLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 3) {
                         tvTabMaoYi.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabMaoYi.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        maoYiLineTv.setBackgroundResource(R.color.white);
                     }
                     tvTabAll.setTextColor(resources.getColor(R.color.title_bg));
+                    tvTabAll.setTypeface(Typeface.create("",Typeface.BOLD));
+                    allLineTv.setBackgroundResource(R.color.title_bg);
                     break;
                 case 1:
                     if (currIndex == 0) {
                         tvTabAll.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabAll.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        allLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 2) {
                         tvTabDongTai.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabDongTai.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        dongTaiLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 3) {
                         tvTabMaoYi.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabMaoYi.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        maoYiLineTv.setBackgroundResource(R.color.white);
                     }
                     tvTabNews.setTextColor(resources.getColor(R.color.title_bg));
+                    tvTabNews.setTypeface(Typeface.create("",Typeface.BOLD));
+                    newsLineTv.setBackgroundResource(R.color.title_bg);
                     break;
                 case 2:
                     if (currIndex == 0) {
                         tvTabAll.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabAll.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        allLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 1) {
                         tvTabNews.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabNews.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        newsLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 3) {
                         tvTabMaoYi.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabMaoYi.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        maoYiLineTv.setBackgroundResource(R.color.white);
                     }
                     tvTabDongTai.setTextColor(resources.getColor(R.color.title_bg));
+                    tvTabDongTai.setTypeface(Typeface.create("",Typeface.BOLD));
+                    dongTaiLineTv.setBackgroundResource(R.color.title_bg);
                     break;
                 case 3:
                     if (currIndex == 0) {
                         tvTabAll.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabAll.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        allLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 1) {
                         tvTabNews.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabNews.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        newsLineTv.setBackgroundResource(R.color.white);
                     } else if (currIndex == 2) {
                         tvTabDongTai.setTextColor(resources.getColor(R.color.mainTabOff));
+                        tvTabDongTai.setTypeface(Typeface.create("",Typeface.NORMAL));
+                        dongTaiLineTv.setBackgroundResource(R.color.white);
                     }
                     tvTabMaoYi.setTextColor(resources.getColor(R.color.title_bg));
+                    tvTabMaoYi.setTypeface(Typeface.create("",Typeface.BOLD));
+                    maoYiLineTv.setBackgroundResource(R.color.title_bg);
                     break;
             }
             currIndex = arg0;
