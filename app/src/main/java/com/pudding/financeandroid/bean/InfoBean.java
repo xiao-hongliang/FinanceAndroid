@@ -1,6 +1,7 @@
 package com.pudding.financeandroid.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 公司咨询bean
@@ -15,6 +16,8 @@ public class InfoBean implements Serializable{
     private String title;
     private String logo;
     private String createTimeStr;
+    //资讯详情内容
+    private List<LoanContentBean> richTextContent;
 
     public String getId() {
         return id;
@@ -46,5 +49,13 @@ public class InfoBean implements Serializable{
 
     public void setCreateTimeStr(String createTimeStr) {
         this.createTimeStr = createTimeStr;
+    }
+
+    public List<LoanContentBean> getRichTextContent() {
+        return richTextContent;
+    }
+
+    public void setRichTextContent(List<LoanContentBean> richTextContent) {
+        this.richTextContent = richTextContent;
     }
 }

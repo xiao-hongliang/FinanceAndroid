@@ -1,6 +1,7 @@
 package com.pudding.financeandroid.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.ab.image.AbImageLoader;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.activity.InfoDetailActivity;
 import com.pudding.financeandroid.bean.InfoBean;
 
 import java.util.List;
@@ -66,11 +68,7 @@ public class InfoListAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		InfoBean info = infoBeen.get(position);
-		if(position == 0) {
-			holder.tvTitle.setText("耀联投资欢迎11界领导视察顺利通过");
-		}else {
-			holder.tvTitle.setText(info.getTitle());
-		}
+		holder.tvTitle.setText(info.getTitle());
 		holder.createTime.setText(info.getCreateTimeStr());
 		holder.infoId = info.getId();
 
@@ -81,9 +79,9 @@ public class InfoListAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				ViewHolder holder = (ViewHolder) v.getTag();
 				String id = holder.infoId;
-//				Intent it = new Intent(v.getContext(),InfoDetailsActivity.class);
-//				it.putExtra("infoId", id);
-//				v.getContext().startActivity(it);
+				Intent it = new Intent(v.getContext(), InfoDetailActivity.class);
+				it.putExtra("infoId", id);
+				v.getContext().startActivity(it);
 			}
 		});
 		return convertView;

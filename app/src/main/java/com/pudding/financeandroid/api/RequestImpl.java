@@ -152,4 +152,11 @@ public class RequestImpl {
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.company_list, params, responseListener);
 	}
 
+	//获取公司栏目的新闻资讯详情
+	public void companyInfoDetail(String infoId, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("id", infoId);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.company_info_detail, params, responseListener);
+	}
+
 }

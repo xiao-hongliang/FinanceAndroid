@@ -7,31 +7,36 @@
     android:paddingBottom="15dp"
     android:paddingLeft="15dp">
 
-    <TextView
-        android:id="@+id/info_item_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignTop="@+id/info_item_logo"
-        android:layout_toLeftOf="@+id/info_item_logo"
-        android:lineSpacingExtra="2dp"
-        android:textColor="@color/font_3"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textSize="18sp"/>
+        android:layout_toLeftOf="@+id/info_item_logo">
 
-    <TextView
-        android:id="@+id/info_item_createTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/info_item_title"
-        android:textColor="@color/font_9"
-        android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/info_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/font_3"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/info_item_createTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_9"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/info_item_logo"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_alignParentRight="true"/>
-
 
 </RelativeLayout>

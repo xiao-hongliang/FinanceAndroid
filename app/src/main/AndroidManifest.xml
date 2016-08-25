@@ -77,6 +77,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified" >
         </activity>
+        <activity
+            android:name=".activity.InfoDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.CALL_PHONE" />

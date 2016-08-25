@@ -131,7 +131,6 @@ public class FinancingDetailActivity extends AbActivity{
         }
         int finishInt = Integer.parseInt(intStr);
         //计算红色进度条的显示值end
-
         percentageLeftTv = (TextView) this.findViewById(R.id.percentage_left);
         percentageRightTv = (TextView) this.findViewById(R.id.percentage_right);
         //LayoutParams参数依次为，宽度，高度，权重占比
