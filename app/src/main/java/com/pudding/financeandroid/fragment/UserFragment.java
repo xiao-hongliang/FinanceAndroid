@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.activity.MainActivity;
 import com.pudding.financeandroid.activity.MyOrderActivity;
 import com.pudding.financeandroid.activity.UpdateUserPwdActivity;
+import com.pudding.financeandroid.util.SPUtils;
 import com.shizhefei.fragment.LazyFragment;
 
 /**
@@ -44,13 +47,12 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
     protected void onResumeLazy() {
         super.onResumeLazy();
         Log.v(TAG, "onResumeLazy is call");
-        checkLogin();
     }
 
     //检查登陆状态
     private void checkLogin() {
-//        String phone = (String) SPUtils.get(mContext, "phone", "");
-//        if (AbStrUtil.isEmpty(phone)) {
+        String phone = (String) SPUtils.get(mContext, "phone", "");
+        if (AbStrUtil.isEmpty(phone)) {
 //            MainActivity mainActivity = (MainActivity) getActivity();
 //            mainActivity.indicatorViewPager.setCurrentItem(0, true);
 
@@ -58,7 +60,7 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
 //            Intent intent = new Intent();
 //            intent.setClass(mContext, UserLoginActivity.class);
 //            startActivity(intent);
-//        }
+        }
     }
 
     @Override
@@ -66,7 +68,9 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
         Intent intent = new Intent();
         switch(v.getId()) {
             case R.id.user_logout_btn:
-                AbToastUtil.showToast(mContext, "退出登陆哦");
+//                AbToastUtil.showToast(mContext, "退出登陆哦");
+//                MainActivity mainActivity = (MainActivity) getActivity();
+//                mainActivity.indicatorViewPager.setCurrentItem(1, true);
                 break;
             case R.id.user_center_layout_1:
                 intent.setClass(mContext, MyOrderActivity.class);

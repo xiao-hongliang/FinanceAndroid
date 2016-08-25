@@ -1,108 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/page_bg">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:paddingTop="15dp"
-        android:paddingLeft="25dp"
-        android:paddingBottom="20dp"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="房贷-月利率0.75%"
-            android:textSize="18sp"
-            android:textColor="@color/font_3"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp">
-
-            <ImageView
-                android:id="@+id/item_icon_loan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_fd"/>
-
-            <View
-                android:id="@+id/line_item"
-                android:layout_width="3px"
-                android:layout_height="75dp"
-                android:background="@color/page_bg"
-                android:layout_toRightOf="@+id/item_icon_loan"
-                android:layout_marginLeft="25dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_toRightOf="@+id/line_item"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="8dp">
-                
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="分期:"
-                        android:textColor="@color/font_lose_c"
-                        android:textSize="14sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/font_3"
-                        android:textSize="14sp"
-                        android:text="20年(204期)"
-                        android:layout_marginLeft="33dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="贷款金额:"
-                        android:textColor="@color/font_lose_c"
-                        android:textSize="14sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥"
-                        android:textSize="16sp"
-                        android:textColor="@color/title_bg"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/title_bg"
-                        android:textSize="24sp"
-                        android:text="200.00"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/myLoan_list"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/divider"
+        android:fadingEdge="none"
+        android:smoothScrollbar="true"
+        ptr:ptrAnimationStyle="flip" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </LinearLayout>

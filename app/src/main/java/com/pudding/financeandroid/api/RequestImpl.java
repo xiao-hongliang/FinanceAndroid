@@ -159,4 +159,18 @@ public class RequestImpl {
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.company_info_detail, params, responseListener);
 	}
 
+	//获取我的理财订单列表信息
+	public void myFinancingList(int pageNo, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("pageNo", pageNo);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.my_financing_list, params, responseListener);
+	}
+
+	//获取我的贷款订单列表信息
+	public void myLoanList(int pageNo, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("pageNo", pageNo);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.my_loan_list, params, responseListener);
+	}
+
 }

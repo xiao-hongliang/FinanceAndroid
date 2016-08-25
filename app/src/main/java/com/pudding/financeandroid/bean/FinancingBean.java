@@ -139,4 +139,5 @@ public class FinancingBean implements Serializable{
     public void setFinishRateStr(String finishRateStr) {
         this.finishRateStr = finishRateStr;
     }
+
 }

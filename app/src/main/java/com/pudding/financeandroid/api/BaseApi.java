@@ -46,5 +46,9 @@ public class BaseApi {
 	public  String company_list = "finance/info/list";
 	/** 公司模块的资讯详情 */
 	public  String company_info_detail = "finance/info/detail";
+	/** 获取我的理财订单列表信息 */
+	public  String my_financing_list = "finance/order/finance-order-list";
+	/** 获取我的贷款订单列表信息 */
+	public  String my_loan_list = "finance/order/loan-order-list";
 
 }

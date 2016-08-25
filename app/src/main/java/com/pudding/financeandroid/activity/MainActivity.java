@@ -55,7 +55,7 @@ public class MainActivity extends AbFragmentActivity {
         indicatorViewPager.setOnIndicatorPageChangeListener(new IndicatorViewPager.OnIndicatorPageChangeListener() {
             @Override
             public void onIndicatorPageChange(int preItem, int currentItem) {
-                // 保存一下首页tabfragment当前显示的页面状态
+                // 保存一下首页tabFragment当前显示的页面状态
                 myApplication.setMainFragmentCurrentItem(currentItem);
                 if (currentItem == 0) {
                     setTitle(R.string.main_title_name);
