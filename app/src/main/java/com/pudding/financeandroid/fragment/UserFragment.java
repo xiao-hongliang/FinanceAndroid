@@ -68,9 +68,7 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
         Intent intent = new Intent();
         switch(v.getId()) {
             case R.id.user_logout_btn:
-//                AbToastUtil.showToast(mContext, "退出登陆哦");
-//                MainActivity mainActivity = (MainActivity) getActivity();
-//                mainActivity.indicatorViewPager.setCurrentItem(1, true);
+                AbToastUtil.showToast(mContext, "退出登陆哦");
                 break;
             case R.id.user_center_layout_1:
                 intent.setClass(mContext, MyOrderActivity.class);

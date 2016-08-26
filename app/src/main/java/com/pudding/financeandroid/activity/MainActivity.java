@@ -1,6 +1,7 @@
 package com.pudding.financeandroid.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ab.fragment.AbFragmentActivity;
+import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
@@ -22,6 +24,7 @@ import com.pudding.financeandroid.fragment.HomeFragment;
 import com.pudding.financeandroid.fragment.LiCaiFragment;
 import com.pudding.financeandroid.fragment.UserFragment;
 import com.pudding.financeandroid.global.MyApplication;
+import com.pudding.financeandroid.util.SPUtils;
 import com.shizhefei.view.indicator.Indicator;
 import com.shizhefei.view.indicator.IndicatorViewPager;
 import com.shizhefei.view.viewpager.SViewPager;
@@ -55,8 +58,6 @@ public class MainActivity extends AbFragmentActivity {
         indicatorViewPager.setOnIndicatorPageChangeListener(new IndicatorViewPager.OnIndicatorPageChangeListener() {
             @Override
             public void onIndicatorPageChange(int preItem, int currentItem) {
-                // 保存一下首页tabFragment当前显示的页面状态
-                myApplication.setMainFragmentCurrentItem(currentItem);
                 if (currentItem == 0) {
                     setTitle(R.string.main_title_name);
                 } else if (currentItem == 1) {
@@ -66,8 +67,19 @@ public class MainActivity extends AbFragmentActivity {
                 } else if (currentItem == 3) {
                     setTitle(R.string.company_title_name);
                 } else if(currentItem == 4) {
-                    setTitle(R.string.user_title_name);
+                    String phone = (String) SPUtils.get(mContext, "phone", "");
+                    if (AbStrUtil.isEmpty(phone)) {
+                        indicatorViewPager.setCurrentItem(myApplication.getMainFragmentCurrentItem(), true);
+
+                        Intent intent = new Intent();
+                        intent.setClass(mContext, UserLoginActivity.class);
+                        startActivity(intent);
+                    }else {
+                        setTitle(R.string.user_title_name);
+                    }
                 }
+                // 保存一下首页tabFragment当前显示的页面状态
+                myApplication.setMainFragmentCurrentItem(currentItem);
             }
         });
     }
