@@ -77,4 +77,7 @@
     <string name="noData">没有更多啦</string>
     <string name="netOff">网络未连接</string>
     <string name="info_detail">资讯详情</string>
+    <string name="logout_hint">退出登录成功</string>
+
+    <string name="income_detail">收益明细</string>
 </resources>

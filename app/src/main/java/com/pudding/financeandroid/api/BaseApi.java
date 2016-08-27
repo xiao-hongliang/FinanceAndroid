@@ -56,5 +56,12 @@ public class BaseApi {
 	public  String my_financing_apply_list = "finance/user/financeapply-list";
 	/** 获取我的贷款申请列表信息 */
 	public  String my_loan_apply_list = "finance/user/loanapply-list";
-
+	/** 用户退出登录 */
+	public  String userLogout = "finance/user/logout";
+	/** 获取我的收益概况 */
+	public  String myIncome_summary = "finance/user/income-summary";
+	/** 获取我的收益明细 */
+	public  String myIncome_detail = "finance/user/income-detail";
+	/** 获取首页信息 */
+	public  String get_index = "finance/index";
 }

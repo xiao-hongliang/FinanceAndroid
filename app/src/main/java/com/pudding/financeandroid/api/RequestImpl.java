@@ -192,4 +192,26 @@ public class RequestImpl {
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.my_loan_apply_list, params, responseListener);
 	}
 
+	//退出登录
+	public void userLogout(AbStringHttpResponseListener responseListener) {
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.userLogout, responseListener);
+	}
+
+	//获取我的收益概况信息
+	public void myIncomeSummary(AbStringHttpResponseListener responseListener) {
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.myIncome_summary, responseListener);
+	}
+
+	//获取我的收益明细列表信息
+	public void myIncomeDetailList(int pageNo, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("pageNo", pageNo);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.myIncome_detail, params, responseListener);
+	}
+
+	//获取个人中心的信息
+	public void getIndex(AbStringHttpResponseListener responseListener) {
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.get_index, responseListener);
+	}
+
 }

@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ab.fragment.AbFragmentActivity;
+import com.ab.global.AbActivityManager;
+import com.ab.util.AbLogUtil;
 import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
@@ -23,7 +27,6 @@ import com.pudding.financeandroid.fragment.DaiKuanFragment;
 import com.pudding.financeandroid.fragment.HomeFragment;
 import com.pudding.financeandroid.fragment.LiCaiFragment;
 import com.pudding.financeandroid.fragment.UserFragment;
-import com.pudding.financeandroid.global.MyApplication;
 import com.pudding.financeandroid.util.SPUtils;
 import com.shizhefei.view.indicator.Indicator;
 import com.shizhefei.view.indicator.IndicatorViewPager;
@@ -32,8 +35,8 @@ import com.shizhefei.view.viewpager.SViewPager;
 public class MainActivity extends AbFragmentActivity {
 
     private Context mContext;
-    private MyApplication myApplication;
     public IndicatorViewPager indicatorViewPager;
+    private long exitTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,6 @@ public class MainActivity extends AbFragmentActivity {
         View view = inflater.inflate(R.layout.activity_main, null);
         setContentView(view);
         mContext = MainActivity.this;
-        myApplication = (MyApplication) this.getApplication();
         setTitle(R.string.app_name);
 
         SViewPager viewPager = (SViewPager) findViewById(R.id.tabmain_viewPager);
@@ -162,5 +164,29 @@ public class MainActivity extends AbFragmentActivity {
         titleBarll.addView(mAbTitleBar);
         // 设置文字对齐方式
         mAbTitleBar.setTitleBarGravity(Gravity.CENTER, Gravity.CENTER);
+    }
+
+    /**
+     * 描述：退出
+     */
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            // System.currentTimeMillis()无论何时调用，肯定大于2000
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                try {
+                    AbActivityManager.getInstance().clearAllActivity();
+                } catch (Exception e) {
+                    AbLogUtil.d("main:", "退出=" + e.getMessage());
+                } finally {
+                    System.exit(0);
+                }
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

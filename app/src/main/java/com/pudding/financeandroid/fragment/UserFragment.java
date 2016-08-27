@@ -12,12 +12,15 @@ import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.activity.MainActivity;
 import com.pudding.financeandroid.activity.MyFinancingApplyActivity;
+import com.pudding.financeandroid.activity.MyIncomeActivity;
 import com.pudding.financeandroid.activity.MyLoanApplyActivity;
 import com.pudding.financeandroid.activity.MyOrderActivity;
 import com.pudding.financeandroid.activity.UpdateUserPwdActivity;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.UserInfoBean;
+import com.pudding.financeandroid.response.CommonResponse;
 import com.pudding.financeandroid.response.UserInfoResponse;
 import com.pudding.financeandroid.util.SPUtils;
 import com.shizhefei.fragment.LazyFragment;
@@ -54,20 +57,29 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
         httpPost();
     }
 
+    private void logout(Boolean isExecuteServerLogout) {
+        SPUtils.put(mContext, "phone", "");
+        if(isExecuteServerLogout) {
+            httpLogouPost();
+        }
+        MainActivity tabMainActivity = (MainActivity) getActivity();
+        tabMainActivity.indicatorViewPager.setCurrentItem(0, false);
+    }
+
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
         switch(v.getId()) {
             case R.id.user_logout_btn:
-//                AbToastUtil.showToast(mContext, "退出登陆哦");
-                SPUtils.put(mContext, "phone", "");
+                logout(Boolean.TRUE);
                 break;
             case R.id.user_center_layout_1:
                 intent.setClass(mContext, MyOrderActivity.class);
                 startActivity(intent);
                 break;
             case R.id.user_center_layout_2:
-                AbToastUtil.showToast(mContext, R.string.user_center_2);
+                intent.setClass(mContext, MyIncomeActivity.class);
+                startActivity(intent);
                 break;
             case R.id.user_center_layout_3:
                 intent.setClass(mContext, MyFinancingApplyActivity.class);
@@ -125,7 +137,11 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
                     if (bean.getSuccess()) {
                         initView(bean.getData());
                     } else {
-                        AbToastUtil.showToast(mContext, bean.getMsg());
+                        if(bean.getCode() == -100) {
+                            logout(Boolean.FALSE);
+                        }else {
+                            AbToastUtil.showToast(mContext, bean.getMsg());
+                        }
                     }
                 }catch(Exception e) {
                     Log.v(TAG, "Home加载数据异常！" + e.getMessage());
@@ -133,4 +149,40 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
             }
         });
     }
+
+    private void httpLogouPost() {
+        ri.userLogout(new AbStringHttpResponseListener() {
+            // 开始执行前
+            @Override
+            public void onStart() {
+                // 显示进度框
+//                 AbDialogUtil.showProgressDialog(mContext, 0, "正在获取数据...");
+            }
+            // 完成后调用，失败，成功
+            @Override
+            public void onFinish() {
+//                AbDialogUtil.removeDialog(mContext);
+                Log.d(TAG, "onFinish");
+            }
+            // 失败，调用
+            @Override
+            public void onFailure(int statusCode, String content, Throwable error) {
+                AbToastUtil.showToast(mContext, error.getMessage());
+                Log.v(TAG, "onFailure");
+            }
+            // 获取数据成功会调用这里
+            public void onSuccess(int statusCode, String content) {
+                try{
+                    CommonResponse bean = (CommonResponse) AbJsonUtil.fromJson(content, CommonResponse.class);
+                    // 验证成功
+                    if (bean.getSuccess()) {
+                        AbToastUtil.showToast(mContext, R.string.logout_hint);
+                    }
+                }catch(Exception e) {
+                    Log.v(TAG, "Home加载数据异常！" + e.getMessage());
+                }
+            }
+        });
+    }
+
 }
