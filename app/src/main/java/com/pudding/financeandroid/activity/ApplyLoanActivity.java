@@ -201,6 +201,7 @@ public class ApplyLoanActivity extends AbActivity{
                     // 验证成功
                     if (bean.getSuccess()) {
                         AbToastUtil.showToast(mContext, "申请提交成功");
+                        finish();
                     } else {
                         if(bean.getCode() == -100) {
                             Intent intentLogin = new Intent();

@@ -80,7 +80,6 @@ public class UserLoginActivity extends AbActivity{
                     return;
                 }
                 //可以进行登陆了
-                SPUtils.put(mContext, "phone", phone);
                 UserLoginForm userLoginForm = new UserLoginForm("", phone, pwd);
                 userLoginPost(userLoginForm);
             }
@@ -119,7 +118,7 @@ public class UserLoginActivity extends AbActivity{
         });
     }
 
-    private void userLoginPost(UserLoginForm form) {
+    private void userLoginPost(final UserLoginForm form) {
         ri.userLogin(form, new AbStringHttpResponseListener() {
             // 开始执行前
             @Override
@@ -146,6 +145,7 @@ public class UserLoginActivity extends AbActivity{
                     // 验证成功
                     if (bean.getSuccess()) {
                         AbToastUtil.showToast(mContext, "登陆成功");
+                        SPUtils.put(mContext, "phone", form.getUserName());
                         finish();
                     } else {
                         AbToastUtil.showToast(mContext, bean.getMsg());

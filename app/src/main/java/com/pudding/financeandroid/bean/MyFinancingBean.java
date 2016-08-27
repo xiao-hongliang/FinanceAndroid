@@ -23,6 +23,8 @@ public class MyFinancingBean implements Serializable {
     private String minAmount;
     //投资总额
     private String investTimeName;
+    //申请状态名称
+    private String statusName;
 
     public String getId() {
         return id;
@@ -78,5 +80,13 @@ public class MyFinancingBean implements Serializable {
 
     public void setInvestTimeName(String investTimeName) {
         this.investTimeName = investTimeName;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
 }

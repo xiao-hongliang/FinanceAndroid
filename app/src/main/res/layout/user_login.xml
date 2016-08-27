@@ -65,6 +65,7 @@
             android:layout_toRightOf="@id/img_code_reg"
             android:textColor="@color/font_6"
             android:textColorHint="@color/font_9"
+            android:inputType="textPassword"
             android:hint="@string/login_pwd_hint"
             android:paddingLeft="10dp"
             android:paddingRight="20dp"/>

@@ -5,7 +5,7 @@ package com.pudding.financeandroid.api;
  */
 public class BaseApi {
 
-	public static final String BASE_URL = "http://wld.budingnet.com/";
+	public static final String BASE_URL = "http://yaolian.budingnet.com/";
 
 	private static BaseApi instance;
 	
@@ -50,5 +50,11 @@ public class BaseApi {
 	public  String my_financing_list = "finance/order/finance-order-list";
 	/** 获取我的贷款订单列表信息 */
 	public  String my_loan_list = "finance/order/loan-order-list";
+	/** 获取我的个人信息 */
+	public  String my_user_info = "finance/user/info";
+	/** 获取我的理财申请列表信息 */
+	public  String my_financing_apply_list = "finance/user/financeapply-list";
+	/** 获取我的贷款申请列表信息 */
+	public  String my_loan_apply_list = "finance/user/loanapply-list";
 
 }

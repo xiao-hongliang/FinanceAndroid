@@ -64,6 +64,7 @@ public class RegisterActivity extends AbActivity{
                 Intent intent = new Intent();
                 intent.setClass(mContext, UserLoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         //设置AbTitleBar在最上

@@ -69,7 +69,7 @@ public class MainActivity extends AbFragmentActivity {
                 } else if(currentItem == 4) {
                     String phone = (String) SPUtils.get(mContext, "phone", "");
                     if (AbStrUtil.isEmpty(phone)) {
-                        indicatorViewPager.setCurrentItem(myApplication.getMainFragmentCurrentItem(), true);
+                        indicatorViewPager.setCurrentItem(preItem, false);
 
                         Intent intent = new Intent();
                         intent.setClass(mContext, UserLoginActivity.class);
@@ -78,8 +78,8 @@ public class MainActivity extends AbFragmentActivity {
                         setTitle(R.string.user_title_name);
                     }
                 }
-                // 保存一下首页tabFragment当前显示的页面状态
-                myApplication.setMainFragmentCurrentItem(currentItem);
+//                // 保存一下首页tabFragment当前显示的页面状态
+//                myApplication.setMainFragmentCurrentItem(currentItem);
             }
         });
     }
@@ -107,7 +107,8 @@ public class MainActivity extends AbFragmentActivity {
             }
             TextView textView = (TextView) convertView;
             textView.setText(tabNames[position]);
-            textView.setCompoundDrawablesWithIntrinsicBounds(0, tabIcons[position], 0, 0);
+            textView.setCompoundDrawablesWithIntrinsicBounds(null,
+                    getResources().getDrawable(tabIcons[position]), null, null);
             return textView;
         }
 
