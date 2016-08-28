@@ -34,7 +34,7 @@ public class RequestImpl {
 	public void loanList(int pageNo, AbStringHttpResponseListener responseListener) {
 		AbRequestParams params = new AbRequestParams();
 		params.put("pageNo", pageNo);
-		mAbHttpUtil.post(BaseApi.BASE_URL + api.loan_list, responseListener);
+		mAbHttpUtil.post(BaseApi.BASE_URL + api.loan_list, params, responseListener);
 	}
 
 	//贷款详情
