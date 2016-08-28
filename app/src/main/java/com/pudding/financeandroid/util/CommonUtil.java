@@ -4,6 +4,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.pudding.financeandroid.bean.LoanStageBean;
+
+import java.util.List;
+
 /**
  * 公共工具类
  *
@@ -35,4 +39,11 @@ public class CommonUtil {
         return false;
     }
 
+    public static String[] parseNameList(List<LoanStageBean> stageBeen) {
+        String[] beans = new String[stageBeen.size()];
+        for(int i=0; i<stageBeen.size(); i++) {
+            beans[i] = stageBeen.get(i).getName();
+        }
+        return beans;
+    }
 }

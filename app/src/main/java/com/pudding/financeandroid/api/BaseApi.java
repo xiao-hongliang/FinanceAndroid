@@ -66,4 +66,12 @@ public class BaseApi {
 	public  String get_index = "finance/index";
 	/** APP版本升级检测接口 */
 	public static String app_upgrade = "finance/index/upgrade";
+	/** 预约理财申请页面，理财产品的列表信息 */
+	public String getProductList_finance = "finance/finance/productOptions";
+	/** 预约贷款申请页面，贷款产品的列表信息 */
+	public String getProductList_loan = "finance/loan/productOptions";
+	/** 首页进入推荐有礼接口(返回html页面) */
+	public static String recommend_xplain = "finance/index/recommendxplain";
+	/** 27.用户注册协议 */
+	public static String legal_user = "finance/index/legal-user";
 }

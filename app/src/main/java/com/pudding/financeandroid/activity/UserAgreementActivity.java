@@ -3,7 +3,8 @@ package com.pudding.financeandroid.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.ab.activity.AbActivity;
 import com.ab.view.titlebar.AbTitleBar;
@@ -18,7 +19,6 @@ import com.pudding.financeandroid.util.TitleBarUtil;
 public class UserAgreementActivity extends AbActivity{
 
     private Context mContext;
-    private TextView agreementTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,8 @@ public class UserAgreementActivity extends AbActivity{
         mContext = UserAgreementActivity.this;
 
         AbTitleBar mAbTitleBar = this.getTitleBar();
-        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.register_user_agreement);
+        String title = getIntent().getStringExtra("title");
+        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, title);
         //设置AbTitleBar在最上
         this.setTitleBarOverlay(false);
         //绑定返回上一页的点击按钮
@@ -39,8 +40,13 @@ public class UserAgreementActivity extends AbActivity{
             }
         });
 
-        agreementTv = (TextView)this.findViewById(R.id.agreement_content);
-        agreementTv.setText("这是用户协议，这是用户协议，这是用户协议，这是用户协议，这是用户协议，这是用户协议，这是用户协议，这是用户协议，这是用户协议，");
+        WebView webView = (WebView) findViewById(R.id.webView);
+        String url = getIntent().getStringExtra("url");
+        webView.loadUrl(url);
 
+        //启用支持javascript
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
     }
 }

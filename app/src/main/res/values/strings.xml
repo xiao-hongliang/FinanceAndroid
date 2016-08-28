@@ -68,6 +68,7 @@
     <string name="apply_invest_num">请输入购买的份数</string>
     <string name="apply_loan_price">请输入您的贷款金额</string>
     <string name="apply_loan_stage_list">请选择分期</string>
+    <string name="apply_product_null">申请的产品为空,不能提交</string>
 
     <string name="company_all">全部</string>
     <string name="company_news">行业新闻</string>

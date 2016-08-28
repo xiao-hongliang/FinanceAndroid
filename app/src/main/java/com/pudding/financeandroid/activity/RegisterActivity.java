@@ -17,6 +17,7 @@ import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.form.UserRegisterForm;
 import com.pudding.financeandroid.response.CommonResponse;
@@ -182,6 +183,8 @@ public class RegisterActivity extends AbActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                intent.putExtra("url", BaseApi.BASE_URL + BaseApi.legal_user);
+                intent.putExtra("title", "耀联理财服务协议");
                 intent.setClass(mContext, UserAgreementActivity.class);
                 startActivity(intent);
             }

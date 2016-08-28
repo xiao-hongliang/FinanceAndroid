@@ -19,6 +19,7 @@ import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.activity.LoanDetailActivity;
 import com.pudding.financeandroid.adapter.LoanListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
+import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.bean.LoanBean;
 import com.pudding.financeandroid.response.LoanListResponse;
 import com.shizhefei.fragment.LazyFragment;
@@ -61,7 +62,8 @@ public class DaiKuanFragment extends LazyFragment{
         loanListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LoanBean bean = (LoanBean) newAdapter.getItem(position);
+                ListView listView = (ListView) parent;
+                LoanBean bean = (LoanBean) listView.getItemAtPosition(position);
                 Intent itemIntent = new Intent();
                 itemIntent.setClass(mContext, LoanDetailActivity.class);
                 Bundle bundle = new Bundle();

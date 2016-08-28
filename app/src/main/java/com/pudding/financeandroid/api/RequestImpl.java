@@ -217,4 +217,13 @@ public class RequestImpl {
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.get_index, responseListener);
 	}
 
+	//预约贷款申请页面，贷款产品的列表接口
+	public void getProductListForLoanApply(AbStringHttpResponseListener responseListener) {
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.getProductList_loan, responseListener);
+	}
+
+	//预约理财申请页面，理财产品的列表接口
+	public void getProductListForFinancingApply(AbStringHttpResponseListener responseListener) {
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.getProductList_finance, responseListener);
+	}
 }

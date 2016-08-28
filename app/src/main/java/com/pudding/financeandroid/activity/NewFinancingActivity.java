@@ -71,7 +71,8 @@ public class NewFinancingActivity extends AbActivity{
         financingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FinancingBean bean = (FinancingBean) newAdapter.getItem(position);
+                ListView listView = (ListView) parent;
+                FinancingBean bean = (FinancingBean) listView.getItemAtPosition(position);
                 Intent itemIntent = new Intent();
                 itemIntent.setClass(mContext, FinancingDetailActivity.class);
                 Bundle bundle = new Bundle();
