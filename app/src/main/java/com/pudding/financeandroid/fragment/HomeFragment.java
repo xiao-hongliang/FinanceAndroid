@@ -15,8 +15,12 @@ import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.activity.ApplyInvestActivity;
+import com.pudding.financeandroid.activity.ApplyLoanActivity;
 import com.pudding.financeandroid.activity.FinancingDetailActivity;
 import com.pudding.financeandroid.activity.LoanDetailActivity;
+import com.pudding.financeandroid.activity.MainActivity;
+import com.pudding.financeandroid.activity.NewFinancingActivity;
 import com.pudding.financeandroid.adapter.FinancingListAdapter;
 import com.pudding.financeandroid.adapter.HomeGridAdapter;
 import com.pudding.financeandroid.adapter.LoanListAdapter;
@@ -148,16 +152,34 @@ public class HomeFragment extends LazyFragment{
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int index, long arg3) {
-                // 在本例中arg2=arg3
-                //AbToastUtil.showToast(mContext, "=arg0:"+arg0+"=arg2:"+index+"=arg3:"+arg3);
-                ApplicationBean bean = homeAdapter.getList().get(index);
-                AbToastUtil.showToast(mContext, bean.getName());
-//                Intent intent = new Intent();
-//                String url = BaseApi.getInstance(mContext).getAppUrl(bean.getGateway(), bean.getAppId());
-//                intent.putExtra("url", url);
-//                intent.putExtra("applicationId", bean.getId());
-//                intent.setClass(mContext, BaseWebViewActivity.class);
-//                startActivity(intent);
+                MainActivity tabMainActivity = (MainActivity) getActivity();
+                switch (index) {
+                    case 0:
+                        Intent newFinancingApply = new Intent();
+                        newFinancingApply.setClass(mContext, NewFinancingActivity.class);
+                        startActivity(newFinancingApply);
+                        break;
+                    case 1:
+                        tabMainActivity.indicatorViewPager.setCurrentItem(1, false);
+                        break;
+                    case 2:
+                        Intent financingApply = new Intent();
+                        financingApply.setClass(mContext, ApplyInvestActivity.class);
+                        financingApply.putExtra("isMainEnter", Boolean.TRUE);
+                        startActivity(financingApply);
+                        break;
+                    case 3:
+                        Intent loanApply = new Intent();
+                        loanApply.setClass(mContext, ApplyLoanActivity.class);
+                        loanApply.putExtra("isMainEnter", Boolean.TRUE);
+                        startActivity(loanApply);
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        tabMainActivity.indicatorViewPager.setCurrentItem(3, false);
+                        break;
+                }
             }
         });
     }

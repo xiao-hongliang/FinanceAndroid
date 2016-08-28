@@ -3,14 +3,18 @@ package com.pudding.financeandroid.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.activity.LoanDetailActivity;
 import com.pudding.financeandroid.adapter.LoanListAdapter;
@@ -27,16 +31,15 @@ import java.util.List;
  * Created by xiao.hongliang on 2016/8/16.
  */
 public class DaiKuanFragment extends LazyFragment{
-
+    private static final String TAG = DaiKuanFragment.class.getName();
     public static final String INTENT_STRING_TABNAME = "intent_String_tabname";
     public static final String INTENT_INT_INDEX = "intent_int_index";
 
     private Context mContext;
-    private LoanListAdapter adapter;
+    private LoanListAdapter newAdapter;
     /** 连接对象 */
     private RequestImpl ri = null;
-    private static final String TAG = DaiKuanFragment.class.getName();
-    private ListView loanListView;
+    private int pageNum = 1;
 
     @Override
     protected void onCreateViewLazy(Bundle savedInstanceState) {
@@ -45,13 +48,20 @@ public class DaiKuanFragment extends LazyFragment{
 
         mContext = this.getApplicationContext();
         ri = new RequestImpl(mContext);
-        loanListView = (ListView)this.findViewById(R.id.loan_list_view);
-        httpPost();
+        httpPost(Boolean.FALSE, null);
+    }
+
+    private void initListView(List<LoanBean> loanBeanList) {
+        PullToRefreshListView loanListView = (PullToRefreshListView)this.findViewById(R.id.loan_list_view);
+        newAdapter = new LoanListAdapter(loanBeanList, mContext);
+        loanListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        loanListView.setOnRefreshListener(new MyOnRefreshListener2(loanListView));
+        loanListView.setAdapter(newAdapter);
         //设置点击item监听事件
         loanListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LoanBean bean = (LoanBean) adapter.getItem(position);
+                LoanBean bean = (LoanBean) newAdapter.getItem(position);
                 Intent itemIntent = new Intent();
                 itemIntent.setClass(mContext, LoanDetailActivity.class);
                 Bundle bundle = new Bundle();
@@ -62,13 +72,33 @@ public class DaiKuanFragment extends LazyFragment{
         });
     }
 
-    private void initListView(List<LoanBean> loanBeanList) {
-        adapter = new LoanListAdapter(loanBeanList, mContext);
-        loanListView.setAdapter(adapter);
+    class MyOnRefreshListener2 implements PullToRefreshBase.OnRefreshListener2<ListView> {
+        private PullToRefreshListView mPtflv;
+        public MyOnRefreshListener2(PullToRefreshListView ptflv) {
+            this.mPtflv = ptflv;
+        }
+        @Override
+        public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {}
+        @Override
+        public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+            // 上拉加载
+            String label = DateUtils.formatDateTime(mContext,
+                    System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME| DateUtils.FORMAT_SHOW_DATE
+                            | DateUtils.FORMAT_ABBREV_ALL);
+            refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+            refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
+            refreshView.getLoadingLayoutProxy().setRefreshingLabel("加载中……");
+            refreshView.getLoadingLayoutProxy().setReleaseLabel("释放加载");
+
+            httpPost(Boolean.TRUE, mPtflv);
+        }
     }
 
-    private void httpPost() {
-        ri.loanList(new AbStringHttpResponseListener() {
+    private void httpPost(final Boolean isMorePage, final PullToRefreshListView perv) {
+        if(isMorePage) {
+            pageNum++;
+        }
+        ri.loanList(pageNum, new AbStringHttpResponseListener() {
             // 开始执行前
             @Override
             public void onStart() {
@@ -92,9 +122,15 @@ public class DaiKuanFragment extends LazyFragment{
                     LoanListResponse bean = (LoanListResponse) AbJsonUtil.fromJson(content, LoanListResponse.class);
                     // 验证成功
                     if (bean.getSuccess()) {
-//                        AbToastUtil.showToast(mContext, "数据获取成功!");
-                        //加载贷款列表数据
-                        if(bean.getData().size()>0){
+                        if(isMorePage) {
+                            if(bean.getData().size() > 0){
+                                newAdapter.addNews(bean.getData());
+                                newAdapter.notifyDataSetChanged();
+                            }else{
+                                Toast.makeText(mContext, R.string.noData, Toast.LENGTH_SHORT).show();
+                            }
+                            perv.onRefreshComplete();
+                        }else {
                             initListView(bean.getData());
                         }
                     } else {

@@ -1,4 +1,4 @@
-package com.pudding.financeandroid.fragment;
+package com.pudding.financeandroid.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,43 +10,54 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ab.activity.AbActivity;
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
+import com.ab.view.titlebar.AbTitleBar;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.pudding.financeandroid.R;
-import com.pudding.financeandroid.activity.FinancingDetailActivity;
 import com.pudding.financeandroid.adapter.FinancingListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.response.FinancingListResponse;
-import com.shizhefei.fragment.LazyFragment;
+import com.pudding.financeandroid.util.TitleBarUtil;
 
 import java.util.List;
 
 /**
- * 理财的fragment
+ * 理财产品-新手体验的页面
  *
- * Created by xiao.hongliang on 2016/8/16.
+ * Created by xiao.hongliang on 2016/8/28.
  */
-public class LiCaiFragment extends LazyFragment{
-    private static final String TAG = LiCaiFragment.class.getName();
-    public static final String INTENT_STRING_TABNAME = "intent_String_tabname";
-    public static final String INTENT_INT_INDEX = "intent_int_index";
+public class NewFinancingActivity extends AbActivity{
+    private static final String TAG = ApplyInvestActivity.class.getName();
     private Context mContext;
     /** 连接对象 */
     private RequestImpl ri = null;
-    private FinancingListAdapter newAdapter;
     private int pageNum = 1;
+    private FinancingListAdapter newAdapter;
 
     @Override
-    protected void onCreateViewLazy(Bundle savedInstanceState) {
-        super.onCreateViewLazy(savedInstanceState);
-        setContentView(R.layout.tab_main_licai);
-
-        mContext = this.getApplicationContext();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setAbContentView(R.layout.tab_main_licai);
+        setStatusBar(R.color.title_bg);
+        mContext = NewFinancingActivity.this;
         ri = new RequestImpl(mContext);
+        AbTitleBar mAbTitleBar = this.getTitleBar();
+        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.gridView_name_1);
+        //设置AbTitleBar在最上
+        this.setTitleBarOverlay(false);
+        //绑定返回上一页的点击按钮
+        mAbTitleBar.getLogoView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         httpPost(Boolean.FALSE, null);
     }
 
@@ -97,7 +108,7 @@ public class LiCaiFragment extends LazyFragment{
         if(isMorePage) {
             pageNum++;
         }
-        ri.financingList(pageNum, Boolean.FALSE, new AbStringHttpResponseListener() {
+        ri.financingList(pageNum, Boolean.TRUE, new AbStringHttpResponseListener() {
             // 开始执行前
             @Override
             public void onStart() {

@@ -64,4 +64,6 @@ public class BaseApi {
 	public  String myIncome_detail = "finance/user/income-detail";
 	/** 获取首页信息 */
 	public  String get_index = "finance/index";
+	/** APP版本升级检测接口 */
+	public static String app_upgrade = "finance/index/upgrade";
 }

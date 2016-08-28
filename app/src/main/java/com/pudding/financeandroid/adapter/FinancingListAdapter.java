@@ -77,4 +77,10 @@ public class FinancingListAdapter extends BaseAdapter{
         TextView nameTv;
         TextView labelNameTv;
     }
+
+    public void addNews(List<FinancingBean> addFinancingBeen) {
+        for(FinancingBean bean : addFinancingBeen) {
+            datas.add(bean);
+        }
+    }
 }

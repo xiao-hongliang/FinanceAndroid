@@ -5,10 +5,21 @@
     android:layout_height="match_parent"
     android:background="@color/page_bg">
 
-    <ListView
+    <!--<ListView
         android:id="@+id/financing_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </ListView>
+    </ListView>-->
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/financing_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/divider"
+        android:fadingEdge="none"
+        android:smoothScrollbar="true"
+        ptr:ptrAnimationStyle="flip" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </LinearLayout>

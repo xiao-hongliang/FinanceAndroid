@@ -17,11 +17,13 @@ import android.widget.Toast;
 
 import com.ab.fragment.AbFragmentActivity;
 import com.ab.global.AbActivityManager;
+import com.ab.update.UpdateHelper;
 import com.ab.util.AbLogUtil;
 import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.fragment.CompanyFragment;
 import com.pudding.financeandroid.fragment.DaiKuanFragment;
 import com.pudding.financeandroid.fragment.HomeFragment;
@@ -47,6 +49,13 @@ public class MainActivity extends AbFragmentActivity {
         setContentView(view);
         mContext = MainActivity.this;
         setTitle(R.string.app_name);
+        setStatusBar(view, R.color.title_bg);
+
+        //启动更新检测
+        UpdateHelper updateHelper = new UpdateHelper.Builder(this).checkUrl(BaseApi.BASE_URL + BaseApi.app_upgrade)
+                .isAutoInstall(true) // 设置为false需在下载完手动点击安装;默认值为true，下载后自动安装。
+                .build();
+        updateHelper.check();
 
         SViewPager viewPager = (SViewPager) findViewById(R.id.tabmain_viewPager);
         Indicator indicator = (Indicator) findViewById(R.id.tabmain_indicator);

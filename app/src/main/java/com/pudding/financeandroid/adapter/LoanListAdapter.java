@@ -77,4 +77,10 @@ public class LoanListAdapter extends BaseAdapter{
         TextView loanTypeNameTv;
         TextView monthRateInfoTv;
     }
+
+    public void addNews(List<LoanBean> addLoanBeen) {
+        for(LoanBean bean : addLoanBeen) {
+            datas.add(bean);
+        }
+    }
 }

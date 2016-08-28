@@ -31,7 +31,9 @@ public class RequestImpl {
 	}
 
 	//贷款列表
-	public void loanList(AbStringHttpResponseListener responseListener) {
+	public void loanList(int pageNo, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("pageNo", pageNo);
 		mAbHttpUtil.post(BaseApi.BASE_URL + api.loan_list, responseListener);
 	}
 
@@ -114,12 +116,13 @@ public class RequestImpl {
 	}
 
 	//理财列表
-	public void financingList(Boolean isNewExperience, AbStringHttpResponseListener responseListener) {
+	public void financingList(int pageNo, Boolean isNewExperience, AbStringHttpResponseListener responseListener) {
 		AbRequestParams params = new AbRequestParams();
 		//是否是加载新手体验的列表数据
 		if(isNewExperience) {
 			params.put("moduleId", "24090440408895901");
 		}
+		params.put("pageNo", pageNo);
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.financing_list, params, responseListener);
 	}
 
