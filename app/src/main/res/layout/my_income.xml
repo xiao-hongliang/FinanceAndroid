@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:orientation="vertical"
-        android:background="@color/title_bg">
+        android:background="@drawable/background_gradient">
 
         <TextView
             android:id="@+id/myIncome_amount"

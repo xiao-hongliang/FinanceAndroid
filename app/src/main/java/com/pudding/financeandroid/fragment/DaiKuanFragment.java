@@ -19,7 +19,6 @@ import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.activity.LoanDetailActivity;
 import com.pudding.financeandroid.adapter.LoanListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
-import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.bean.LoanBean;
 import com.pudding.financeandroid.response.LoanListResponse;
 import com.shizhefei.fragment.LazyFragment;

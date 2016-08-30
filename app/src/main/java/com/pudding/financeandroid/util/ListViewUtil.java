@@ -17,7 +17,7 @@ public class ListViewUtil {
      *
      * @param listView     需要计算高度的listView
      */
-    public static void setListViewHeightBasedOnChildren(ListView listView) {
+    public static void setListViewHeightBasedOnChildren(ListView listView, Boolean isLimitHeight) {
         // 获取ListView对应的Adapter
         BaseAdapter listAdapter = (BaseAdapter) listView.getAdapter();
         if (listAdapter == null) {
@@ -31,7 +31,13 @@ public class ListViewUtil {
             // 计算子项View 的宽高
             listItem.measure(0, 0);
             // 统计所有子项的总高度
-            totalHeight += listItem.getMeasuredHeight();
+            int itemHeight = listItem.getMeasuredHeight();
+            if(isLimitHeight != null && isLimitHeight) {
+                if(itemHeight > 400) {
+                    itemHeight = 400;
+                }
+            }
+            totalHeight += itemHeight;
         }
 
         ViewGroup.LayoutParams params = listView.getLayoutParams();

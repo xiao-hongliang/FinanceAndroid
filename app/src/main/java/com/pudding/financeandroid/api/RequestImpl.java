@@ -226,4 +226,11 @@ public class RequestImpl {
 	public void getProductListForFinancingApply(AbStringHttpResponseListener responseListener) {
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.getProductList_finance, responseListener);
 	}
+
+	//获取我的用户消息列表信息
+	public void userMessageList(int pageNo, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("pageNo", pageNo);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_message_list, params, responseListener);
+	}
 }

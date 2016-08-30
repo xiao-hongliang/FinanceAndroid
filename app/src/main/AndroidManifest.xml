@@ -112,6 +112,11 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.UserMessageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.CALL_PHONE" />

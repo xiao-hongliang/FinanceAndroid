@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/user_message_icon"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/shape_message_icon"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/user_message_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_3"
+            android:textSize="18sp"
+            android:lineSpacingExtra="5dp"
+            android:text="尊敬的客户：您购买的云南白药供应链贷款编号X089779990"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/user_message_createTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/font_9"
+        android:layout_gravity="right"
+        android:text="2016-08-30"
+        android:textSize="14sp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="15dp"/>
+
+</LinearLayout>

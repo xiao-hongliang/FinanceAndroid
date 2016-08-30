@@ -45,9 +45,10 @@
 
             <ImageView
                 android:id="@+id/item_icon_loan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_fd"/>
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/icon_fd"
+                android:layout_marginTop="2dp"/>
 
             <View
                 android:id="@+id/line_item"

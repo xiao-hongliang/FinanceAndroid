@@ -50,6 +50,8 @@ public class MyLoanFragment extends LazyFragment{
         mContext = getApplicationContext();
         ri = new RequestImpl(mContext);
         myLoanListView = (PullToRefreshListView)this.findViewById(R.id.myLoan_list);
+
+        httpPost(Boolean.FALSE, null);
     }
 
     private void initView(List<MyLoanBean> loanBeen){

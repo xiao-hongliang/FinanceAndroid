@@ -1,64 +1,70 @@
-package com.pudding.financeandroid.fragment;
+package com.pudding.financeandroid.activity;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ab.activity.AbActivity;
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
+import com.ab.view.titlebar.AbTitleBar;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.pudding.financeandroid.R;
-import com.pudding.financeandroid.adapter.MyFinancingListAdapter;
+import com.pudding.financeandroid.adapter.UserMessageListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
-import com.pudding.financeandroid.bean.MyFinancingBean;
-import com.pudding.financeandroid.response.MyFinancingResponse;
-import com.shizhefei.fragment.LazyFragment;
+import com.pudding.financeandroid.bean.UserMessageBean;
+import com.pudding.financeandroid.response.UserMessageListResponse;
+import com.pudding.financeandroid.util.TitleBarUtil;
 
 import java.util.List;
 
 /**
- * 我的理财fragment页面
+ * 用户消息列表页面
  *
- * Created by xiao.hongliang on 2016/8/18.
+ * Created by xiao.hongliang on 2016/8/30.
  */
-public class MyFinancingFragment extends LazyFragment{
-    private static final String TAG = MyFinancingFragment.class.getName();
-    private static MyFinancingFragment instance;
+public class UserMessageActivity extends AbActivity{
+    private static final String TAG = UserMessageActivity.class.getName();
     private Context mContext;
     /** 连接对象 */
     private RequestImpl ri = null;
-    private PullToRefreshListView myFinancingList = null;
     private int pageNum = 1;
-    private MyFinancingListAdapter newAdapter = null;
-
-    public static MyFinancingFragment newInstance() {
-        if(instance == null) {
-            instance = new MyFinancingFragment();
-        }
-        return instance;
-    }
+    private UserMessageListAdapter newAdapter = null;
 
     @Override
-    protected void onCreateViewLazy(Bundle savedInstanceState) {
-        super.onCreateViewLazy(savedInstanceState);
-        setContentView(R.layout.my_financing);
-        mContext = getApplicationContext();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setAbContentView(R.layout.user_message);
+        setStatusBar(R.color.title_bg);
+        mContext = UserMessageActivity.this;
         ri = new RequestImpl(mContext);
+        AbTitleBar mAbTitleBar = this.getTitleBar();
+        new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.user_message);
+        //设置AbTitleBar在最上
+        this.setTitleBarOverlay(false);
+        //绑定返回上一页的点击按钮
+        mAbTitleBar.getLogoView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-        myFinancingList = (PullToRefreshListView)this.findViewById(R.id.myFinancing_list);
         httpPost(Boolean.FALSE, null);
     }
 
-    private void initView(List<MyFinancingBean> financingBeen){
-        newAdapter = new MyFinancingListAdapter(mContext, financingBeen, R.layout.my_financing_item);
-        myFinancingList.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
-        myFinancingList.setOnRefreshListener(new MyOnRefreshListener2(myFinancingList));
-        myFinancingList.setAdapter(newAdapter);
+    private void initView(List<UserMessageBean> messageBeen) {
+        PullToRefreshListView userMessageListView = (PullToRefreshListView)this.findViewById(R.id.user_message_list);
+        newAdapter = new UserMessageListAdapter(mContext, messageBeen, R.layout.user_message_list_item);
+        userMessageListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        userMessageListView.setOnRefreshListener(new MyOnRefreshListener2(userMessageListView));
+        userMessageListView.setAdapter(newAdapter);
     }
 
     class MyOnRefreshListener2 implements PullToRefreshBase.OnRefreshListener2<ListView> {
@@ -87,7 +93,7 @@ public class MyFinancingFragment extends LazyFragment{
         if(isMorePage) {
             pageNum++;
         }
-        ri.myFinancingList(pageNum, new AbStringHttpResponseListener() {
+        ri.userMessageList(pageNum, new AbStringHttpResponseListener() {
             // 开始执行前
             @Override
             public void onStart() {
@@ -109,7 +115,7 @@ public class MyFinancingFragment extends LazyFragment{
             // 获取数据成功会调用这里
             public void onSuccess(int statusCode, String content) {
                 try{
-                    MyFinancingResponse bean = (MyFinancingResponse) AbJsonUtil.fromJson(content, MyFinancingResponse.class);
+                    UserMessageListResponse bean = (UserMessageListResponse) AbJsonUtil.fromJson(content, UserMessageListResponse.class);
                     // 验证成功
                     if (bean.getSuccess()) {
                         if(isMorePage) {

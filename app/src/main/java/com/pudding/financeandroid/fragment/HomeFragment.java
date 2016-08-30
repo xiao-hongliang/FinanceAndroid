@@ -99,7 +99,7 @@ public class HomeFragment extends LazyFragment{
                 startActivity(itemIntent);
             }
         });
-        ListViewUtil.setListViewHeightBasedOnChildren(mainFinancingListView);
+        ListViewUtil.setListViewHeightBasedOnChildren(mainFinancingListView, null);
     }
 
     private void initLoanList(List<LoanBean> loanBeen) {
@@ -119,7 +119,7 @@ public class HomeFragment extends LazyFragment{
                 startActivity(itemIntent);
             }
         });
-        ListViewUtil.setListViewHeightBasedOnChildren(mainLoanListView);
+        ListViewUtil.setListViewHeightBasedOnChildren(mainLoanListView, Boolean.TRUE);
     }
 
     /**

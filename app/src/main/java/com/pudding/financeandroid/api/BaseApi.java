@@ -74,4 +74,6 @@ public class BaseApi {
 	public static String recommend_xplain = "finance/index/recommendxplain";
 	/** 27.用户注册协议 */
 	public static String legal_user = "finance/index/legal-user";
+	/** 用户消息列表 */
+	public String user_message_list = "finance/user/msg/list";
 }

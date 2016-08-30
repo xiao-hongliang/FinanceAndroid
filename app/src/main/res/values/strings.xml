@@ -81,4 +81,5 @@
     <string name="logout_hint">退出登录成功</string>
 
     <string name="income_detail">收益明细</string>
+    <string name="user_message">消息</string>
 </resources>

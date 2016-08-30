@@ -20,7 +20,6 @@ import com.ab.global.AbActivityManager;
 import com.ab.update.UpdateHelper;
 import com.ab.util.AbLogUtil;
 import com.ab.util.AbStrUtil;
-import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.api.BaseApi;
@@ -165,7 +164,14 @@ public class MainActivity extends AbFragmentActivity {
         rightViewList.findViewById(R.id.main_home_right_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AbToastUtil.showToast(mContext, "消息模块哦。");
+                String phone = (String) SPUtils.get(mContext, "phone", "");
+                Intent messageIntent = new Intent();
+                if (AbStrUtil.isEmpty(phone)) {
+                    messageIntent.setClass(mContext, UserLoginActivity.class);
+                }else {
+                    messageIntent.setClass(mContext, UserMessageActivity.class);
+                }
+                startActivity(messageIntent);
             }
         });
         // 设置标题布局
