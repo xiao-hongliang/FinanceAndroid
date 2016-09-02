@@ -3,6 +3,7 @@ package com.pudding.financeandroid.global;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.ab.global.AbAppConfig;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -13,8 +14,10 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.log.CrashHandler;
 
-public class MyApplication extends Application {
+import cn.jpush.android.api.JPushInterface;
 
+public class MyApplication extends Application {
+	private static final String TAG = MyApplication.class.getName();
 	public boolean isFirstStart = true;
 	public SharedPreferences mSharedPreferences = null;
 	
@@ -44,6 +47,9 @@ public class MyApplication extends Application {
 				.denyCacheImageMultipleSizesInMemory().discCacheFileNameGenerator(new Md5FileNameGenerator())
 				.tasksProcessingOrder(QueueProcessingType.LIFO).build();
 		ImageLoader.getInstance().init(config);
+
+		JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+		JPushInterface.init(this);
 	}
 
 	@Override

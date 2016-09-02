@@ -33,8 +33,8 @@ public class ListViewUtil {
             // 统计所有子项的总高度
             int itemHeight = listItem.getMeasuredHeight();
             if(isLimitHeight != null && isLimitHeight) {
-                if(itemHeight > 400) {
-                    itemHeight = 400;
+                if(itemHeight > 450) {
+                    itemHeight = itemHeight / 2;
                 }
             }
             totalHeight += itemHeight;
