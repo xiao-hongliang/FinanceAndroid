@@ -67,8 +67,8 @@ public class InfoDetailActivity extends AbActivity{
         infoTitleTv.setText(infoBean.getTitle());
         TextView infoCreateTimeTv = (TextView) this.findViewById(R.id.info_detail_createTime);
         infoCreateTimeTv.setText(infoBean.getCreateTimeStr());
-        ImageView infoLogoIv = (ImageView) this.findViewById(R.id.info_detail_logo);
-        this.mAbImageLoader.display(infoLogoIv, infoBean.getLogo());
+//        ImageView infoLogoIv = (ImageView) this.findViewById(R.id.info_detail_logo);
+//        this.mAbImageLoader.display(infoLogoIv, infoBean.getLogo());
 
         //迭代加载显示资讯详情的内容
         LinearLayout contentView = (LinearLayout) this.findViewById(R.id.info_detail_content);

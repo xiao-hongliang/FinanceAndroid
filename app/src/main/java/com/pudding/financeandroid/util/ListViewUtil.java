@@ -25,6 +25,7 @@ public class ListViewUtil {
         }
 
         int totalHeight = 0;
+        int fristItemHeight = 0;
         for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
             // listAdapter.getCount()返回数据项的数目
             View listItem = listAdapter.getView(i, null, listView);
@@ -33,15 +34,17 @@ public class ListViewUtil {
             // 统计所有子项的总高度
             int itemHeight = listItem.getMeasuredHeight();
             if(isLimitHeight != null && isLimitHeight) {
-                if(itemHeight > 450) {
-                    itemHeight = itemHeight / 2;
+                if(i == 0) {
+                    fristItemHeight = itemHeight;
+                }else {
+                    itemHeight = fristItemHeight;
                 }
             }
             totalHeight += itemHeight;
         }
 
         ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         // listView.getDividerHeight()获取子项间分隔符占用的高度
         // params.height最后得到整个ListView完整显示需要的高度
         listView.setLayoutParams(params);
