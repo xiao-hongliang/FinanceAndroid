@@ -233,4 +233,11 @@ public class RequestImpl {
 		params.put("pageNo", pageNo);
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_message_list, params, responseListener);
 	}
+
+	//获取我的用户消息列表信息
+	public void getAdvertisementInfo(String id, AbStringHttpResponseListener responseListener) {
+		AbRequestParams params = new AbRequestParams();
+		params.put("id", id);
+		mAbHttpUtil.get(BaseApi.BASE_URL + api.get_advertisement_info, params, responseListener);
+	}
 }

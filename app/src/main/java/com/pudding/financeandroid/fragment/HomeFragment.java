@@ -15,6 +15,7 @@ import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.activity.AdvertisementDetailActivity;
 import com.pudding.financeandroid.activity.ApplyInvestActivity;
 import com.pudding.financeandroid.activity.ApplyLoanActivity;
 import com.pudding.financeandroid.activity.FinancingDetailActivity;
@@ -130,6 +131,7 @@ public class HomeFragment extends LazyFragment{
             ADInfo info = new ADInfo();
             info.setUrl(bean.getLogo());
             info.setContent(bean.getTitle());
+            info.setId(bean.getId());
             infos.add(info);
         }
         ImageCycleView mAdView = (ImageCycleView) findViewById(R.id.ad_view);
@@ -199,7 +201,11 @@ public class HomeFragment extends LazyFragment{
         @Override
         public void onImageClick(ADInfo info, int position, View imageView) {
             //轮播图点击事件
-            //Toast.makeText(mContext, "content->" + info.getContent(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent();
+            intent.setClass(mContext, AdvertisementDetailActivity.class);
+            intent.putExtra("title", info.getContent());
+            intent.putExtra("id", info.getId());
+            startActivity(intent);
         }
         @Override
         public void displayImage(String imageURL, ImageView imageView) {

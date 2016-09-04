@@ -76,4 +76,6 @@ public class BaseApi {
 	public static String legal_user = "finance/index/legal-user";
 	/** 用户消息列表 */
 	public String user_message_list = "finance/user/msg/list";
+	/** 获取首页广告区图片的详情内容 */
+	public String get_advertisement_info = "finance/index/advertisement";
 }
