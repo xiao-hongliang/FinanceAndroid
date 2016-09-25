@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
+import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.activity.MainActivity;
@@ -54,7 +55,18 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
         this.findViewById(R.id.user_center_layout_5).setOnClickListener(this);
         this.findViewById(R.id.user_center_layout_6).setOnClickListener(this);
 
-        httpPost();
+//        httpPost();
+    }
+
+    @Override
+    protected void onResumeLazy() {
+        super.onResumeLazy();
+
+        String phone = (String) SPUtils.get(mContext, "phone", "");
+        Boolean isGetUserInfo = (Boolean) SPUtils.get(mContext, "isGetUserInfo", Boolean.FALSE);
+        if (!AbStrUtil.isEmpty(phone) && !isGetUserInfo) {
+            httpPost();
+        }
     }
 
     private void logout(Boolean isExecuteServerLogout) {
@@ -104,6 +116,7 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
 
     private void initView(UserInfoBean userInfoBean) {
         this.phone = userInfoBean.getPhone();
+        SPUtils.put(mContext, "isGetUserInfo", Boolean.TRUE);
 
         TextView userName = (TextView) this.findViewById(R.id.user_info_name);
         userName.setText(userInfoBean.getUserName());
