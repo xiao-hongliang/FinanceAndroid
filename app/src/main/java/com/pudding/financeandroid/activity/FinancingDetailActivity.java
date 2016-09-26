@@ -18,6 +18,7 @@ import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.bean.LoanContentBean;
@@ -93,6 +94,19 @@ public class FinancingDetailActivity extends AbActivity{
                 Intent intent = new Intent();
                 intent.setClass(mContext, ApplyInvestActivity.class);
                 intent.putExtra("productId", financingBean.getId());
+                startActivity(intent);
+            }
+        });
+        //收益计算器的点击事件绑定
+        this.findViewById(R.id.financing_calculator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                String url = BaseApi.BASE_URL + BaseApi.finance_calculator;
+                url += "?productId=" + financingBean.getId();
+                intent.putExtra("url", url);
+                intent.putExtra("title", "理财计算器");
+                intent.setClass(mContext, UserAgreementActivity.class);
                 startActivity(intent);
             }
         });

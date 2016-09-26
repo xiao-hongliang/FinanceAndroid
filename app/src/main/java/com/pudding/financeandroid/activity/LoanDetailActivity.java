@@ -18,6 +18,7 @@ import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.LoanBean;
 import com.pudding.financeandroid.bean.LoanContentBean;
@@ -90,6 +91,20 @@ public class LoanDetailActivity extends AbActivity{
                 applyIntent.setClass(mContext, ApplyLoanActivity.class);
                 applyIntent.putExtra("productId", loanBean.getId());
                 startActivity(applyIntent);
+            }
+        });
+
+        //贷款计算器的点击事件绑定
+        this.findViewById(R.id.loan_calculator_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                String url = BaseApi.BASE_URL + BaseApi.loan_calculator;
+                url += "?productId=" + loanBean.getId();
+                intent.putExtra("url", url);
+                intent.putExtra("title", "贷款计算器");
+                intent.setClass(mContext, UserAgreementActivity.class);
+                startActivity(intent);
             }
         });
     }

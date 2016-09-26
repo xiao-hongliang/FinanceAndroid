@@ -19,6 +19,7 @@ import com.pudding.financeandroid.bean.AdvertisementBean;
 import com.pudding.financeandroid.response.AdvertisementResponse;
 import com.pudding.financeandroid.util.ListViewUtil;
 import com.pudding.financeandroid.util.TitleBarUtil;
+import com.pudding.financeandroid.view.MyListView;
 
 /**
  * 首页广告区图片的详情内容
@@ -62,10 +63,10 @@ public class AdvertisementDetailActivity extends AbActivity{
         TextView createTimeTv = (TextView) this.findViewById(R.id.adv_info_createTime);
         createTimeTv.setText(bean.getCreateTimeStr());
         //初始化内容的列表显示
-        ListView advertisementListView = (ListView)this.findViewById(R.id.advertisement_list_view);
+        MyListView advertisementListView = (MyListView)this.findViewById(R.id.advertisement_list_view);
         ContentListAdapter contentListAdapter = new ContentListAdapter(bean.getRichTextContent(), mContext);
         advertisementListView.setAdapter(contentListAdapter);
-        ListViewUtil.setListViewHeightBasedOnChildren(advertisementListView, null);
+//        ListViewUtil.setListViewHeightBasedOnChildren(advertisementListView, null);
     }
 
     private void httpPost(String id) {

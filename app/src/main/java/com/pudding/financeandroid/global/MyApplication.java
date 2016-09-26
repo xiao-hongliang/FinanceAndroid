@@ -3,7 +3,6 @@ package com.pudding.financeandroid.global;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.ab.global.AbAppConfig;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;

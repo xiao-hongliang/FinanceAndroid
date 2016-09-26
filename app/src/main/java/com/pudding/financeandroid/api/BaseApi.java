@@ -78,4 +78,8 @@ public class BaseApi {
 	public String user_message_list = "finance/user/msg/list";
 	/** 获取首页广告区图片的详情内容 */
 	public String get_advertisement_info = "finance/index/advertisement";
+	/** 理财产品的收益计算器页面 */
+	public static String finance_calculator = "finance/finance/calculator";
+	/** 贷款产品的贷款计算器页面 */
+	public static String loan_calculator = "finance/loan/calculator";
 }
