@@ -2,11 +2,10 @@ package com.pudding.financeandroid.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,27 +18,34 @@ import android.widget.Toast;
 
 import com.ab.fragment.AbFragmentActivity;
 import com.ab.global.AbActivityManager;
+import com.ab.http.AbStringHttpResponseListener;
 import com.ab.update.UpdateHelper;
+import com.ab.util.AbJsonUtil;
 import com.ab.util.AbLogUtil;
 import com.ab.util.AbStrUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.api.BaseApi;
+import com.pudding.financeandroid.api.RequestImpl;
+import com.pudding.financeandroid.form.UserLoginForm;
 import com.pudding.financeandroid.fragment.CompanyFragment;
 import com.pudding.financeandroid.fragment.DaiKuanFragment;
 import com.pudding.financeandroid.fragment.HomeFragment;
 import com.pudding.financeandroid.fragment.LiCaiFragment;
 import com.pudding.financeandroid.fragment.UserFragment;
+import com.pudding.financeandroid.response.CommonResponse;
 import com.pudding.financeandroid.util.SPUtils;
 import com.shizhefei.view.indicator.Indicator;
 import com.shizhefei.view.indicator.IndicatorViewPager;
 import com.shizhefei.view.viewpager.SViewPager;
 
 public class MainActivity extends AbFragmentActivity {
-
+    private static final String TAG = MainActivity.class.getName();
     private Context mContext;
     public IndicatorViewPager indicatorViewPager;
     private long exitTime = 0;
+    /** 连接对象 */
+    private RequestImpl ri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,7 @@ public class MainActivity extends AbFragmentActivity {
         mContext = MainActivity.this;
         setTitle(R.string.app_name);
         setStatusBar(view, R.color.title_bg);
+        ri = new RequestImpl(mContext);
 
         //启动更新检测
         UpdateHelper updateHelper = new UpdateHelper.Builder(this).checkUrl(BaseApi.BASE_URL + BaseApi.app_upgrade)
@@ -94,6 +101,13 @@ public class MainActivity extends AbFragmentActivity {
 //                myApplication.setMainFragmentCurrentItem(currentItem);
             }
         });
+
+        String phone = (String) SPUtils.get(mContext, "phone", "");
+        String pwd = (String) SPUtils.get(mContext, "pwd", "");
+        if (!AbStrUtil.isEmpty(phone) && !AbStrUtil.isEmpty(pwd)) {
+            //如果是登录成功过的，则下一次启动时，自动登录一把
+            userLoginPost(new UserLoginForm(null, phone, pwd));
+        }
     }
 
     private class MyAdapter extends IndicatorViewPager.IndicatorFragmentPagerAdapter {
@@ -205,5 +219,36 @@ public class MainActivity extends AbFragmentActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    private void userLoginPost(UserLoginForm form) {
+        ri.userLogin(form, new AbStringHttpResponseListener() {
+            // 开始执行前
+            @Override
+            public void onStart() {
+            }
+            // 完成后调用，失败，成功
+            @Override
+            public void onFinish() {
+                Log.d(TAG, "onFinish");
+            }
+            // 失败，调用
+            @Override
+            public void onFailure(int statusCode, String content, Throwable error) {
+                Log.v(TAG, "onFailure");
+            }
+            // 获取数据成功会调用这里
+            public void onSuccess(int statusCode, String content) {
+                try{
+                    CommonResponse bean = (CommonResponse) AbJsonUtil.fromJson(content, CommonResponse.class);
+                    if (bean.getSuccess()) {
+                        Log.v(TAG, "自动登录成功");
+                    }
+                }catch(Exception e) {
+                    Log.v(TAG, "Home加载数据异常！" + e.getMessage());
+                }
+            }
+        });
     }
 }

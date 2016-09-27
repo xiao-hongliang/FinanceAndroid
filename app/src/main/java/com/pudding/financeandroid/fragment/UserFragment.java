@@ -71,6 +71,7 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
 
     private void logout(Boolean isExecuteServerLogout) {
         SPUtils.put(mContext, "phone", "");
+        SPUtils.put(mContext, "pwd", "");
         if(isExecuteServerLogout) {
             httpLogouPost();
         }

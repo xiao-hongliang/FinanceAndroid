@@ -152,6 +152,7 @@ public class UserLoginActivity extends AbActivity{
                     if (bean.getSuccess()) {
                         AbToastUtil.showToast(mContext, "登陆成功");
                         SPUtils.put(mContext, "phone", form.getUserName());
+                        SPUtils.put(mContext, "pwd", form.getPassword());
                         setAlias(form.getUserName());
                         finish();
                     } else {
