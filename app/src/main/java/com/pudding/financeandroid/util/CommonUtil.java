@@ -1,11 +1,18 @@
 package com.pudding.financeandroid.util;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
+import com.pudding.financeandroid.bean.ImgSizeBean;
 import com.pudding.financeandroid.bean.LoanStageBean;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -45,5 +52,36 @@ public class CommonUtil {
             beans[i] = stageBeen.get(i).getName();
         }
         return beans;
+    }
+
+    /**
+     * 获得屏幕宽度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenWidth(Context context)
+    {
+        WindowManager wm = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        return outMetrics.widthPixels;
+    }
+
+    public static ImgSizeBean loadImageFromNetwork(String url) {
+        try {
+            URL m_url = new URL(url);
+            HttpURLConnection con = (HttpURLConnection)m_url.openConnection();
+            InputStream in = con.getInputStream();
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(in, null, options);
+            int height = options.outHeight;
+            int width = options.outWidth;
+            return new ImgSizeBean(width, height);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

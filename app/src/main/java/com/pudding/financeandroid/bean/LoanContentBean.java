@@ -13,6 +13,7 @@ public class LoanContentBean implements Serializable {
 
     private String type;
     private String content;
+    private Integer height;
 
     public String getType() {
         return type;
@@ -28,5 +29,13 @@ public class LoanContentBean implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 }

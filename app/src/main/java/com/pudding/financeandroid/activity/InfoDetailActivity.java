@@ -4,26 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
 import com.ab.http.AbStringHttpResponseListener;
-import com.ab.image.AbImageLoader;
 import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.adapter.ContentListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.InfoBean;
-import com.pudding.financeandroid.bean.LoanContentBean;
 import com.pudding.financeandroid.response.InfoDetailResponse;
+import com.pudding.financeandroid.util.ListViewUtil;
 import com.pudding.financeandroid.util.TitleBarUtil;
-
-import java.util.List;
+import com.pudding.financeandroid.view.MyListView;
 
 /**
  * 公司模块，资讯的详情页面
@@ -35,7 +32,6 @@ public class InfoDetailActivity extends AbActivity{
     private Context mContext;
     /** 连接对象 */
     private RequestImpl ri = null;
-    private AbImageLoader mAbImageLoader = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +40,6 @@ public class InfoDetailActivity extends AbActivity{
         setStatusBar(R.color.title_bg);
         mContext = InfoDetailActivity.this;
         ri = new RequestImpl(mContext);
-        this.mAbImageLoader = AbImageLoader.getInstance(mContext);
         AbTitleBar mAbTitleBar = this.getTitleBar();
         new TitleBarUtil(mContext).setActivityTitleBarBack(mAbTitleBar, R.string.info_detail);
         //设置AbTitleBar在最上
@@ -67,11 +62,15 @@ public class InfoDetailActivity extends AbActivity{
         infoTitleTv.setText(infoBean.getTitle());
         TextView infoCreateTimeTv = (TextView) this.findViewById(R.id.info_detail_createTime);
         infoCreateTimeTv.setText(infoBean.getCreateTimeStr());
-//        ImageView infoLogoIv = (ImageView) this.findViewById(R.id.info_detail_logo);
-//        this.mAbImageLoader.display(infoLogoIv, infoBean.getLogo());
+
+        //初始化内容的列表显示
+        MyListView infoContentList = (MyListView)this.findViewById(R.id.info_detail_content);
+        ContentListAdapter contentListAdapter = new ContentListAdapter(infoBean.getRichTextContent(), mContext);
+        infoContentList.setAdapter(contentListAdapter);
+//        ListViewUtil.setListViewHeightBasedOnChildren(infoContentList, null);
 
         //迭代加载显示资讯详情的内容
-        LinearLayout contentView = (LinearLayout) this.findViewById(R.id.info_detail_content);
+        /*LinearLayout contentView = (LinearLayout) this.findViewById(R.id.info_detail_content);
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         List<LoanContentBean> contentBeanList = infoBean.getRichTextContent();
         for(LoanContentBean contentBean : contentBeanList) {
@@ -84,7 +83,7 @@ public class InfoDetailActivity extends AbActivity{
                 textView.setText(contentBean.getContent());
                 contentView.addView(textView);
             }
-        }
+        }*/
     }
 
     private void httpPost(String infoId) {

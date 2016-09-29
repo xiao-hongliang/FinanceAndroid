@@ -1,6 +1,7 @@
 package com.pudding.financeandroid.activity;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,10 +17,16 @@ import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.adapter.ContentListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.AdvertisementBean;
+import com.pudding.financeandroid.bean.ImgSizeBean;
+import com.pudding.financeandroid.bean.LoanContentBean;
 import com.pudding.financeandroid.response.AdvertisementResponse;
+import com.pudding.financeandroid.util.CommonUtil;
 import com.pudding.financeandroid.util.ListViewUtil;
 import com.pudding.financeandroid.util.TitleBarUtil;
 import com.pudding.financeandroid.view.MyListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 首页广告区图片的详情内容
@@ -63,11 +70,43 @@ public class AdvertisementDetailActivity extends AbActivity{
         TextView createTimeTv = (TextView) this.findViewById(R.id.adv_info_createTime);
         createTimeTv.setText(bean.getCreateTimeStr());
         //初始化内容的列表显示
-        MyListView advertisementListView = (MyListView)this.findViewById(R.id.advertisement_list_view);
+        MyListView advertisementListView = (MyListView) this.findViewById(R.id.advertisement_list_view);
+//        ListView advertisementListView = (ListView) this.findViewById(R.id.advertisement_list_view);
         ContentListAdapter contentListAdapter = new ContentListAdapter(bean.getRichTextContent(), mContext);
         advertisementListView.setAdapter(contentListAdapter);
-//        ListViewUtil.setListViewHeightBasedOnChildren(advertisementListView, null);
+//        ListViewUtil.setListViewHeightBasedOnChildren_1(advertisementListView);
+//        new ImageLoadTask().execute();
     }
+
+    /** 图片异步加载类 */
+//    public class ImageLoadTask extends AsyncTask<String, Void, List<LoanContentBean>> {
+
+//        @Override
+//        protected List<LoanContentBean> doInBackground(String... params) {
+//            List<LoanContentBean> beanList = new ArrayList<>(contentListAdapter.getCount());
+//            for (int i = 0; i < contentListAdapter.getCount(); i++) {
+//                LoanContentBean bean = (LoanContentBean) contentListAdapter.getItem(i);
+//                if("img".equals(bean.getType())) {
+//                    ImgSizeBean imgSizeBean = CommonUtil.loadImageFromNetwork(bean.getContent());
+//                    bean.setHeight(imgSizeBean.getHeight());
+//                }
+//                beanList.add(bean);
+                // 通知去更新UI
+//                publishProgress();
+//            }
+//            return beanList;
+//        }
+
+//        public void onProgressUpdate(List<LoanContentBean> beans) {
+//            if (isCancelled())
+//                return;
+//             更新UI
+//            contentListAdapter.clearData();
+//            contentListAdapter.addData(beans);
+//            contentListAdapter.notifyDataSetChanged();
+//            ListViewUtil.setListViewHeightBasedOnChildren_1(advertisementListView);
+//        }
+//    }
 
     private void httpPost(String id) {
         ri.getAdvertisementInfo(id, new AbStringHttpResponseListener() {

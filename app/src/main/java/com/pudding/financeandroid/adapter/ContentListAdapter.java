@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.ab.image.AbImageLoader;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.bean.LoanContentBean;
+import com.pudding.financeandroid.util.CommonUtil;
 
 import java.util.List;
 
@@ -53,19 +54,30 @@ public class ContentListAdapter extends BaseAdapter{
         if(convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.content_list_item, null);
             holder = new ViewHolder();
-            holder.contentIv = (ImageView) convertView.findViewById(R.id.content_item_img);
             holder.contentTv = (TextView) convertView.findViewById(R.id.content_item_text);
+            holder.contentIv = (ImageView) convertView.findViewById(R.id.content_item_img);
+
+            int screenWidth = CommonUtil.getScreenWidth(mContext);
+            ViewGroup.LayoutParams lp = holder.contentIv.getLayoutParams();
+            lp.width = screenWidth;
+            lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            holder.contentIv.setLayoutParams(lp);
+            holder.contentIv.setMaxWidth(screenWidth);
+            holder.contentIv.setMaxHeight(screenWidth * 2);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         LoanContentBean bean = datas.get(position);
         if("text".equals(bean.getType())) {
-            holder.contentTv.setText(bean.getContent());
             holder.contentTv.setVisibility(View.VISIBLE);
+            holder.contentIv.setVisibility(View.GONE);
+            holder.contentTv.setText(bean.getContent());
         }else {
-            mAbImageLoader.display(holder.contentIv, bean.getContent());
             holder.contentIv.setVisibility(View.VISIBLE);
+            holder.contentTv.setVisibility(View.GONE);
+            mAbImageLoader.display(holder.contentIv, bean.getContent());
         }
 
         return convertView;
@@ -75,4 +87,15 @@ public class ContentListAdapter extends BaseAdapter{
         ImageView contentIv;
         TextView contentTv;
     }
+
+    public void clearData() {
+        this.datas.clear();
+    }
+
+    public void addData(List<LoanContentBean> dataList) {
+        for(LoanContentBean bean : dataList) {
+            this.datas.add(bean);
+        }
+    }
+
 }
