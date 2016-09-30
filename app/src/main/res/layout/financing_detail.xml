@@ -5,8 +5,10 @@
     android:background="@color/white">
 
     <ScrollView
+        android:id="@+id/scrollView_financing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="65dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -171,11 +173,13 @@
                         android:id="@+id/financing_interestPolicy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="一次性还本付息"
+                        android:text="利息每月本金季度"
                         android:layout_gravity="center_horizontal"
                         android:textSize="18sp"
                         android:textColor="@color/font_3"
-                        android:layout_marginBottom="15dp"/>
+                        android:minHeight="38dp"
+                        android:paddingLeft="5dp"
+                        android:gravity="center_horizontal"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -314,21 +318,20 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"/>
 
-            <LinearLayout
-                android:id="@+id/financing_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="300dp"
-                android:orientation="vertical">
-            </LinearLayout>
-            
-            <!--<TextView-->
+            <!--<LinearLayout-->
                 <!--android:id="@+id/financing_content"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:text="内容区"-->
-                <!--android:textColor="@color/font_3"-->
-                <!--android:padding="15dp"/>-->
+                <!--android:minHeight="300dp"-->
+                <!--android:orientation="vertical">-->
+            <!--</LinearLayout>-->
+
+            <com.pudding.financeandroid.view.MyListView
+                android:id="@+id/financing_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+            </com.pudding.financeandroid.view.MyListView>
 
         </LinearLayout>
         

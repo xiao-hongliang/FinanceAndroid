@@ -19,7 +19,7 @@
         android:paddingRight="20dp"/>
     
     <View
-        android:layout_width="2dp"
+        android:layout_width="1dp"
         android:layout_height="60dp"
         android:background="@color/page_bg"
         android:layout_gravity="center_vertical"/>

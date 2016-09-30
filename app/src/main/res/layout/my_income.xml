@@ -118,15 +118,43 @@
 
     </LinearLayout>
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    <!--<com.handmark.pulltorefresh.library.PullToRefreshListView-->
+        <!--xmlns:ptr="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/myIncome_detail_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:divider="@drawable/divider"-->
+        <!--android:fadingEdge="none"-->
+        <!--android:smoothScrollbar="true"-->
+        <!--ptr:ptrAnimationStyle="flip" >-->
+    <!--</com.handmark.pulltorefresh.library.PullToRefreshListView>-->
+
+    <ListView
         android:id="@+id/myIncome_detail_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@drawable/divider"
-        android:fadingEdge="none"
-        android:smoothScrollbar="true"
-        ptr:ptrAnimationStyle="flip" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+        android:divider="@drawable/divider">
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看更多"
+            android:textColor="@color/font_6"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/page_bg"/>
 
 </LinearLayout>

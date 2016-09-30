@@ -55,11 +55,17 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"/>
 
-            <ListView
+            <!--<ListView-->
+                <!--android:id="@+id/main_financing_list_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+            <!--</ListView>-->
+
+            <com.pudding.financeandroid.view.MyListView
                 android:id="@+id/main_financing_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            </ListView>
+            </com.pudding.financeandroid.view.MyListView>
 
         </LinearLayout>
 
@@ -77,11 +83,17 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"/>
 
-            <ListView
+            <!--<ListView-->
+                <!--android:id="@+id/main_loan_list_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+            <!--</ListView>-->
+
+            <com.pudding.financeandroid.view.MyListView
                 android:id="@+id/main_loan_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            </ListView>
+            </com.pudding.financeandroid.view.MyListView>
 
         </LinearLayout>
 

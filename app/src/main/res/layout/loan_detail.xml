@@ -5,8 +5,10 @@
                 android:background="@color/page_bg">
 
         <ScrollView
+            android:id="@+id/scrollView_loan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="65dp"
             android:scrollbars="none">
 
                 <LinearLayout
@@ -113,12 +115,19 @@
                             android:layout_marginLeft="15dp"
                             android:layout_marginRight="15dp"/>
 
-                        <LinearLayout
+                        <!--<LinearLayout-->
+                            <!--android:id="@+id/loan_content"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="vertical">-->
+                        <!--</LinearLayout>-->
+
+                        <com.pudding.financeandroid.view.MyListView
                             android:id="@+id/loan_content"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                        </LinearLayout>
+                            android:padding="10dp">
+                        </com.pudding.financeandroid.view.MyListView>
 
                 </LinearLayout>
 

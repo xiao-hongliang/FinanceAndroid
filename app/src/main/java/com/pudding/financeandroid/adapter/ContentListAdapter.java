@@ -88,14 +88,4 @@ public class ContentListAdapter extends BaseAdapter{
         TextView contentTv;
     }
 
-    public void clearData() {
-        this.datas.clear();
-    }
-
-    public void addData(List<LoanContentBean> dataList) {
-        for(LoanContentBean bean : dataList) {
-            this.datas.add(bean);
-        }
-    }
-
 }

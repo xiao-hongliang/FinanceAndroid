@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.ab.http.AbStringHttpResponseListener;
@@ -34,10 +33,10 @@ import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.bean.LoanBean;
 import com.pudding.financeandroid.bean.MainBean;
 import com.pudding.financeandroid.response.MainResponse;
-import com.pudding.financeandroid.util.ListViewUtil;
 import com.pudding.financeandroid.view.ADInfo;
 import com.pudding.financeandroid.view.ImageCycleView;
 import com.pudding.financeandroid.view.MyGridView;
+import com.pudding.financeandroid.view.MyListView;
 import com.shizhefei.fragment.LazyFragment;
 
 import java.util.ArrayList;
@@ -84,7 +83,8 @@ public class HomeFragment extends LazyFragment{
     }
 
     private void initFinancingList(List<FinancingBean> financingBeen) {
-        ListView mainFinancingListView = (ListView)this.findViewById(R.id.main_financing_list_view);
+//        ListView mainFinancingListView = (ListView)this.findViewById(R.id.main_financing_list_view);
+        MyListView mainFinancingListView = (MyListView)this.findViewById(R.id.main_financing_list_view);
         financingListAdapter = new FinancingListAdapter(financingBeen, mContext);
         mainFinancingListView.setAdapter(financingListAdapter);
         //设置点击item监听事件
@@ -100,11 +100,12 @@ public class HomeFragment extends LazyFragment{
                 startActivity(itemIntent);
             }
         });
-        ListViewUtil.setListViewHeightBasedOnChildren(mainFinancingListView, null);
+//        ListViewUtil.setListViewHeightBasedOnChildren(mainFinancingListView, null);
     }
 
     private void initLoanList(List<LoanBean> loanBeen) {
-        ListView mainLoanListView = (ListView)this.findViewById(R.id.main_loan_list_view);
+//        ListView mainLoanListView = (ListView)this.findViewById(R.id.main_loan_list_view);
+        MyListView mainLoanListView = (MyListView)this.findViewById(R.id.main_loan_list_view);
         loanListAdapter = new LoanListAdapter(loanBeen, mContext);
         mainLoanListView.setAdapter(loanListAdapter);
         //设置点击item监听事件
@@ -120,7 +121,7 @@ public class HomeFragment extends LazyFragment{
                 startActivity(itemIntent);
             }
         });
-        ListViewUtil.setListViewHeightBasedOnChildren(mainLoanListView, Boolean.TRUE);
+//        ListViewUtil.setListViewHeightBasedOnChildren(mainLoanListView, Boolean.TRUE);
     }
 
     /**

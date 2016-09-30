@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
@@ -18,7 +18,6 @@ import com.pudding.financeandroid.adapter.ContentListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.InfoBean;
 import com.pudding.financeandroid.response.InfoDetailResponse;
-import com.pudding.financeandroid.util.ListViewUtil;
 import com.pudding.financeandroid.util.TitleBarUtil;
 import com.pudding.financeandroid.view.MyListView;
 
@@ -67,6 +66,9 @@ public class InfoDetailActivity extends AbActivity{
         MyListView infoContentList = (MyListView)this.findViewById(R.id.info_detail_content);
         ContentListAdapter contentListAdapter = new ContentListAdapter(infoBean.getRichTextContent(), mContext);
         infoContentList.setAdapter(contentListAdapter);
+//        infoContentList.setFocusable(false);
+        ScrollView myScrollView = (ScrollView) this.findViewById(R.id.scrollView_listView);
+        myScrollView.smoothScrollTo(0, 0);
 //        ListViewUtil.setListViewHeightBasedOnChildren(infoContentList, null);
 
         //迭代加载显示资讯详情的内容

@@ -38,7 +38,6 @@ public class MyIncomeActivity extends AbActivity{
     /** 连接对象 */
     private RequestImpl ri = null;
     private int pageNum = 1;
-    private PullToRefreshListView myIncomeDetailList = null;
     private MyIncomeDetailAdapter newAdapter = null;
 
     @Override
@@ -61,7 +60,6 @@ public class MyIncomeActivity extends AbActivity{
             }
         });
 
-        myIncomeDetailList = (PullToRefreshListView)this.findViewById(R.id.myIncome_detail_list);
         httpPostForList(Boolean.FALSE, null);
         httpPostForSummary();
     }
@@ -76,10 +74,13 @@ public class MyIncomeActivity extends AbActivity{
     }
 
     private void initView(List<MyIncomeDetailBean> myIncomeDetailBeen){
+        ListView listView = (ListView) this.findViewById(R.id.myIncome_detail_list);
+//        PullToRefreshListView myIncomeListView = (PullToRefreshListView)this.findViewById(R.id.myIncome_detail_list);
         newAdapter = new MyIncomeDetailAdapter(mContext, myIncomeDetailBeen, R.layout.my_income_list_item);
-        myIncomeDetailList.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
-        myIncomeDetailList.setOnRefreshListener(new MyOnRefreshListener2(myIncomeDetailList));
-        myIncomeDetailList.setAdapter(newAdapter);
+//        myIncomeListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+//        myIncomeListView.setOnRefreshListener(new MyOnRefreshListener2(myIncomeListView));
+//        myIncomeListView.setAdapter(newAdapter);
+        listView.setAdapter(newAdapter);
     }
 
     class MyOnRefreshListener2 implements PullToRefreshBase.OnRefreshListener2<ListView> {

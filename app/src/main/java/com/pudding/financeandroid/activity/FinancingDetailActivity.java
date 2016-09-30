@@ -5,27 +5,24 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
 import com.ab.http.AbStringHttpResponseListener;
-import com.ab.image.AbImageLoader;
 import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.adapter.ContentListAdapter;
 import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.FinancingBean;
-import com.pudding.financeandroid.bean.LoanContentBean;
 import com.pudding.financeandroid.response.FinancingDetailResponse;
 import com.pudding.financeandroid.util.TitleBarUtil;
-
-import java.util.List;
+import com.pudding.financeandroid.view.MyListView;
 
 /**
  * 理财详情页面
@@ -35,13 +32,10 @@ import java.util.List;
 public class FinancingDetailActivity extends AbActivity{
     private static final String TAG = FinancingDetailActivity.class.getName();
     private Context mContext;
-    private TextView percentageLeftTv;
-    private TextView percentageRightTv;
     /** 连接对象 */
     private RequestImpl ri = null;
     private FinancingBean financingBean;
     private String phone = "";
-    private AbImageLoader mAbImageLoader = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +46,6 @@ public class FinancingDetailActivity extends AbActivity{
         ri = new RequestImpl(mContext);
         Intent intent = this.getIntent();
         financingBean = (FinancingBean) intent.getSerializableExtra("bean");
-        this.mAbImageLoader = AbImageLoader.getInstance(mContext);
 
         AbTitleBar mAbTitleBar = this.getTitleBar();
         String title;
@@ -145,30 +138,22 @@ public class FinancingDetailActivity extends AbActivity{
         }
         int finishInt = Integer.parseInt(intStr);
         //计算红色进度条的显示值end
-        percentageLeftTv = (TextView) this.findViewById(R.id.percentage_left);
-        percentageRightTv = (TextView) this.findViewById(R.id.percentage_right);
+        TextView percentageLeftTv = (TextView) this.findViewById(R.id.percentage_left);
+        TextView percentageRightTv = (TextView) this.findViewById(R.id.percentage_right);
         //LayoutParams参数依次为，宽度，高度，权重占比
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(0, 12, (float) finishInt);
         percentageLeftTv.setLayoutParams(p);
         LinearLayout.LayoutParams p2 = new LinearLayout.LayoutParams(0, 12, (float) (100 - finishInt));
         percentageRightTv.setLayoutParams(p2);
 
-
         //迭代加载显示贷款详情的内容
-        LinearLayout contentView = (LinearLayout) this.findViewById(R.id.financing_content);
-        LayoutInflater mInflater = LayoutInflater.from(mContext);
-        List<LoanContentBean> contentBeanList = bean.getRichTextContent();
-        for(LoanContentBean contentBean : contentBeanList) {
-            if("img".equals(contentBean.getType())) {
-                ImageView imageView = (ImageView) mInflater.inflate(R.layout.loan_detail_img, null);
-                mAbImageLoader.display(imageView, contentBean.getContent());
-                contentView.addView(imageView);
-            }else {
-                TextView textView = (TextView) mInflater.inflate(R.layout.loan_detail_text, null);
-                textView.setText(contentBean.getContent());
-                contentView.addView(textView);
-            }
-        }
+        MyListView financingListView = (MyListView)this.findViewById(R.id.financing_content);
+        ContentListAdapter contentListAdapter = new ContentListAdapter(bean.getRichTextContent(), mContext);
+        financingListView.setAdapter(contentListAdapter);
+//        infoContentList.setFocusable(false);
+        ScrollView myScrollView = (ScrollView) this.findViewById(R.id.scrollView_financing);
+        myScrollView.smoothScrollTo(0, 0);
+//        ListViewUtil.setListViewHeightBasedOnChildren(infoContentList, null);
     }
 
     private void httpPost(String financingId) {

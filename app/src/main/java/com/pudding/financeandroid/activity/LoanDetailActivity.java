@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
@@ -18,14 +17,13 @@ import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.adapter.ContentListAdapter;
 import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.LoanBean;
-import com.pudding.financeandroid.bean.LoanContentBean;
 import com.pudding.financeandroid.response.LoanDetailResponse;
 import com.pudding.financeandroid.util.TitleBarUtil;
-
-import java.util.List;
+import com.pudding.financeandroid.view.MyListView;
 
 /**
  * 贷款详情页面
@@ -117,20 +115,13 @@ public class LoanDetailActivity extends AbActivity{
         this.phone = loanBean.getPhone();
 
         //迭代加载显示贷款详情的内容
-        LinearLayout contentView = (LinearLayout) this.findViewById(R.id.loan_content);
-        LayoutInflater mInflater = LayoutInflater.from(mContext);
-        List<LoanContentBean> contentBeanList = loanBean.getRichTextContent();
-        for(LoanContentBean contentBean : contentBeanList) {
-            if("img".equals(contentBean.getType())) {
-                ImageView imageView = (ImageView) mInflater.inflate(R.layout.loan_detail_img, null);
-                mAbImageLoader.display(imageView, contentBean.getContent());
-                contentView.addView(imageView);
-            }else {
-                TextView textView = (TextView) mInflater.inflate(R.layout.loan_detail_text, null);
-                textView.setText(contentBean.getContent());
-                contentView.addView(textView);
-            }
-        }
+        MyListView loanListView = (MyListView)this.findViewById(R.id.loan_content);
+        ContentListAdapter contentListAdapter = new ContentListAdapter(loanBean.getRichTextContent(), mContext);
+        loanListView.setAdapter(contentListAdapter);
+//        infoContentList.setFocusable(false);
+        ScrollView myScrollView = (ScrollView) this.findViewById(R.id.scrollView_loan);
+        myScrollView.smoothScrollTo(0, 0);
+//        ListViewUtil.setListViewHeightBasedOnChildren(infoContentList, null);
     }
 
     private void httpPost(String loanId) {
