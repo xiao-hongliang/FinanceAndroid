@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/income_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+￥13.00"
-        android:textColor="@color/title_bg"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"/>
-    
     <View
-        android:layout_width="1dp"
-        android:layout_height="60dp"
-        android:background="@color/page_bg"
-        android:layout_gravity="center_vertical"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/page_bg"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/income_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+￥13.00"
+            android:textColor="@color/title_bg"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="40dp"
+            android:paddingBottom="40dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="60dp"
+            android:background="@color/page_bg"
+            android:layout_gravity="center_vertical"/>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent">-->
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginLeft="20dp"
@@ -41,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/font_6"
                 android:textSize="16sp"
-                android:text="云南白药供应链贷款"/>
+                android:text="云南白药供应链贷款-12M0M09979号"/>
 
             <TextView
                 android:id="@+id/income_tradeTimeStr"
@@ -54,16 +64,16 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/icon_rightrow"
-            android:layout_centerVertical="true"/>
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:background="@drawable/icon_rightrow"-->
+            <!--android:layout_centerVertical="true"/>-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
-
+    </LinearLayout>
 
 </LinearLayout>
