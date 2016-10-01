@@ -32,9 +32,7 @@ import com.shizhefei.fragment.LazyFragment;
  * Created by xiao.hongliang on 2016/8/16.
  */
 public class UserFragment extends LazyFragment implements View.OnClickListener{
-    private static final String TAG = UserFragment.class.getName();
-    public static final String INTENT_STRING_TABNAME = "intent_String_tabname";
-    public static final String INTENT_INT_INDEX = "intent_int_index";
+    private static final String TAG = UserFragment.class.getSimpleName();
     private Context mContext;
     /** 连接对象 */
     private RequestImpl ri = null;
@@ -55,7 +53,9 @@ public class UserFragment extends LazyFragment implements View.OnClickListener{
         this.findViewById(R.id.user_center_layout_5).setOnClickListener(this);
         this.findViewById(R.id.user_center_layout_6).setOnClickListener(this);
 
-//        httpPost();
+        //每一次销毁当前页面的时候，重新渲染该页面时，需要重新获取用户信息
+        SPUtils.put(mContext, "isGetUserInfo", Boolean.FALSE);
+        httpPost();
     }
 
     @Override

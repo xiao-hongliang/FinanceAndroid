@@ -116,7 +116,8 @@ public class TitleBarUtil {
 		mAbTitleBar.setLogo(R.drawable.icon_left);
 		mAbTitleBar.setPadding(50, 0, 0, 0);
 		mAbTitleBar.setTitleBarBackground(R.color.title_bg);
-		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
+//		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
+		mAbTitleBar.setTitleTextMargin(0, 0, 0, 0);
 		//mAbTitleBar.setLogoLine(R.drawable.line);
 		mAbTitleBar.setTitleBarGravity(Gravity.CENTER,Gravity.CENTER);//设置文字对齐方式
 		// mAbTitleBar.setVisibility(View.GONE);
