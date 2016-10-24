@@ -22,6 +22,7 @@ public class MyIncomeDetailAdapter extends BaseAdapter {
 		TextView tvAmount;
 		TextView tvDataTitle;
 		TextView tvTradeTimeStr;
+		TextView typeNameStr;
 	}
 
 	public MyIncomeDetailAdapter(Context context, List<MyIncomeDetailBean> myIncomeDetailBeen, int listViewItem) {
@@ -54,6 +55,7 @@ public class MyIncomeDetailAdapter extends BaseAdapter {
 			holder.tvAmount = (TextView) convertView.findViewById(R.id.income_amount);
 			holder.tvDataTitle = (TextView) convertView.findViewById(R.id.income_dataTitle);
 			holder.tvTradeTimeStr = (TextView) convertView.findViewById(R.id.income_tradeTimeStr);
+			holder.typeNameStr = (TextView) convertView.findViewById(R.id.income_typeName);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -62,6 +64,7 @@ public class MyIncomeDetailAdapter extends BaseAdapter {
 		holder.tvAmount.setText("+￥" + bean.getAmount());
 		holder.tvDataTitle.setText(bean.getDataTitle());
 		holder.tvTradeTimeStr.setText(bean.getTradeTimeStr());
+		holder.typeNameStr.setText(bean.getTypeName());
 
 		return convertView;
 	}

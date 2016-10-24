@@ -6,7 +6,7 @@ package com.pudding.financeandroid.api;
 public class BaseApi {
 
 //	public static final String BASE_URL = "http://yaolian.budingnet.com/";
-	public static final String BASE_URL = "http://ylapp.yn-invest.com";
+	public static final String BASE_URL = "http://ylapp.yn-invest.com/";
 
 	private static BaseApi instance;
 	
