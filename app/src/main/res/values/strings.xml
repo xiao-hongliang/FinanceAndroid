@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">耀联投资</string>
+    <string name="app_name">耀联金融</string>
     <!-- 注册页面start -->
     <string name="register">注册新用户</string>
     <string name="register_phone">手机号</string>
@@ -34,7 +34,7 @@
     <!-- 忘记密码页面end -->
 
     <!-- 首页标题页面start -->
-    <string name="main_title_name">耀联投资</string>
+    <string name="main_title_name">耀联金融</string>
     <string name="licai_title_name">理财产品</string>
     <string name="daikuan_title_name">贷款产品</string>
     <string name="company_title_name">公司介绍</string>

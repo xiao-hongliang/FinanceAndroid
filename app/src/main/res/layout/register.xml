@@ -245,7 +245,7 @@
             android:id="@+id/xieyi_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="《耀联投资》"
+            android:text="《耀联金融》"
             android:layout_marginTop="2dp"
             android:textSize="16sp"
             android:textColor="@color/font_blue_5"/>
