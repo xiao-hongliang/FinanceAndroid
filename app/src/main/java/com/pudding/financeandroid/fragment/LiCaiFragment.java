@@ -12,15 +12,18 @@ import android.widget.Toast;
 
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
+import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.activity.FinancingDetailActivity;
+import com.pudding.financeandroid.activity.UserLoginActivity;
 import com.pudding.financeandroid.adapter.FinancingListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.response.FinancingListResponse;
+import com.pudding.financeandroid.util.SPUtils;
 import com.shizhefei.fragment.LazyFragment;
 
 import java.util.List;
@@ -63,10 +66,16 @@ public class LiCaiFragment extends LazyFragment{
                 ListView listView = (ListView) parent;
                 FinancingBean bean = (FinancingBean) listView.getItemAtPosition(position);
                 Intent itemIntent = new Intent();
-                itemIntent.setClass(mContext, FinancingDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("bean", bean);
-                itemIntent.putExtras(bundle);
+                //判断一下，是否处于登录状态，详情需要登陆了才可以才看
+                String phone = (String) SPUtils.get(mContext, "phone", "");
+                if (AbStrUtil.isEmpty(phone)) {
+                    itemIntent.setClass(mContext, UserLoginActivity.class);
+                }else {
+                    itemIntent.setClass(mContext, FinancingDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("bean", bean);
+                    itemIntent.putExtras(bundle);
+                }
                 startActivity(itemIntent);
             }
         });

@@ -94,8 +94,6 @@
 
     </LinearLayout>
 
-
-
     <Button
         android:id="@+id/submit_apply_invest"
         android:layout_width="match_parent"
@@ -107,5 +105,57 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"/>
+
+    <LinearLayout
+        android:id="@+id/xieyi_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:id="@+id/jieShiShu_layout_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/xieyi_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_choice_h"
+                android:layout_marginRight="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我已阅读并认可"
+                android:layout_marginTop="2dp"
+                android:textSize="16sp"
+                android:textColor="@color/font_9"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/jieShiShu_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《风险揭示书》"
+            android:layout_marginTop="2dp"
+            android:textSize="16sp"
+            android:textColor="@color/font_blue_5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所述内容"
+            android:layout_marginTop="2dp"
+            android:textSize="16sp"
+            android:textColor="@color/font_9"/>
+
+    </LinearLayout>
 
 </LinearLayout>

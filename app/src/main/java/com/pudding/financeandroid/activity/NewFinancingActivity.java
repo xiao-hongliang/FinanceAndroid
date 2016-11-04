@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.ab.activity.AbActivity;
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
+import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -22,6 +23,7 @@ import com.pudding.financeandroid.adapter.FinancingListAdapter;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.response.FinancingListResponse;
+import com.pudding.financeandroid.util.SPUtils;
 import com.pudding.financeandroid.util.TitleBarUtil;
 
 import java.util.List;
@@ -74,10 +76,16 @@ public class NewFinancingActivity extends AbActivity{
                 ListView listView = (ListView) parent;
                 FinancingBean bean = (FinancingBean) listView.getItemAtPosition(position);
                 Intent itemIntent = new Intent();
-                itemIntent.setClass(mContext, FinancingDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("bean", bean);
-                itemIntent.putExtras(bundle);
+                //判断一下，是否处于登录状态，详情需要登陆了才可以才看
+                String phone = (String) SPUtils.get(mContext, "phone", "");
+                if (AbStrUtil.isEmpty(phone)) {
+                    itemIntent.setClass(mContext, UserLoginActivity.class);
+                }else {
+                    itemIntent.setClass(mContext, FinancingDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("bean", bean);
+                    itemIntent.putExtras(bundle);
+                }
                 startActivity(itemIntent);
             }
         });

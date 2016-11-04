@@ -83,4 +83,7 @@ public class BaseApi {
 	public static String finance_calculator = "finance/finance/calculator";
 	/** 贷款产品的贷款计算器页面 */
 	public static String loan_calculator = "finance/loan/calculator";
+	/** 27.用户注册协议 */
+	public static String legal_risk = "finance/index/legal-risk";
+
 }

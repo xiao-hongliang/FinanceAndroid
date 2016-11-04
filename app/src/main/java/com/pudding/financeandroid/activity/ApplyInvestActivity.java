@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.ab.util.AbJsonUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
+import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.LoanStageBean;
 import com.pudding.financeandroid.form.FinancingApplyForm;
@@ -42,6 +44,9 @@ public class ApplyInvestActivity extends AbActivity{
     private RequestImpl ri = null;
     private String productId = "";
     private List<LoanStageBean> loanProductListBean;
+    //是否选中了协议
+    private Boolean isChecked = true;
+    private ImageView xieyiImageV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,9 +181,38 @@ public class ApplyInvestActivity extends AbActivity{
                     AbToastUtil.showToast(mContext, R.string.apply_product_null);
                     return;
                 }
+                if(!isChecked) {
+                    AbToastUtil.showToast(mContext, R.string.jieShiShu_xieYi);
+                    return;
+                }
                 //可以做点提交的事情了
                 FinancingApplyForm form = new FinancingApplyForm(productId, investName, investPhone, investIdCard, investNum);
                 httpSendLoanApplyPost(form);
+            }
+        });
+        //查看<风险揭示书>的用户协议内容
+        this.findViewById(R.id.jieShiShu_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("url", BaseApi.BASE_URL + BaseApi.legal_risk);
+                intent.putExtra("title", "耀联投资风险揭示书");
+                intent.setClass(mContext, UserAgreementActivity.class);
+                startActivity(intent);
+            }
+        });
+        xieyiImageV = (ImageView) this.findViewById(R.id.xieyi_icon);
+        //<风险揭示书>的checkbox框的选中事件
+        this.findViewById(R.id.jieShiShu_layout_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isChecked) {
+                    isChecked = false;
+                    xieyiImageV.setImageResource(R.drawable.icon_choice_n);
+                }else {
+                    isChecked = true;
+                    xieyiImageV.setImageResource(R.drawable.icon_choice_h);
+                }
             }
         });
     }

@@ -17,6 +17,7 @@
     <string name="register_second_response">请输入第二次密码</string>
     <string name="register_pwd_disagree">二次密码输入不一致</string>
     <string name="register_xieyi">您还没有同意用户协议</string>
+    <string name="jieShiShu_xieYi">您还没有认可《风险揭示书》所述内容</string>
     <string name="register_user_agreement">用户协议</string>
     <!-- 注册页面end -->
 
