@@ -16,6 +16,8 @@ public class InfoBean implements Serializable{
     private String title;
     private String logo;
     private String createTimeStr;
+    //是否置顶的消息
+    private String isTop;
     //资讯详情内容
     private List<LoanContentBean> richTextContent;
 
@@ -49,6 +51,14 @@ public class InfoBean implements Serializable{
 
     public void setCreateTimeStr(String createTimeStr) {
         this.createTimeStr = createTimeStr;
+    }
+
+    public String getIsTop() {
+        return isTop;
+    }
+
+    public void setIsTop(String isTop) {
+        this.isTop = isTop;
     }
 
     public List<LoanContentBean> getRichTextContent() {

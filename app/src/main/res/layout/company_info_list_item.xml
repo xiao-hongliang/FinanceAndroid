@@ -24,12 +24,33 @@
             android:ellipsize="end"
             android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/info_item_createTime"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/font_9"
-            android:layout_marginTop="10dp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/info_item_createTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/font_9"/>
+
+            <TextView
+                android:id="@+id/info_item_isTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:layout_marginLeft="10dp"
+                android:text="置顶"
+                android:textSize="9sp"
+                android:background="@drawable/shape_bar"
+                android:paddingLeft="5dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:paddingRight="5dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

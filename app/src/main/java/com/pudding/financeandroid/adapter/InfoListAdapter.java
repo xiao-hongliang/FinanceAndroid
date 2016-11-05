@@ -29,6 +29,7 @@ public class InfoListAdapter extends BaseAdapter {
 		ImageView ivLogo;
 		TextView tvTitle;
 		TextView createTime;
+		TextView infoItemIsTop;
 		String infoId;
 	}
 
@@ -63,6 +64,7 @@ public class InfoListAdapter extends BaseAdapter {
 			holder.ivLogo = (ImageView) convertView.findViewById(R.id.info_item_logo);
 			holder.tvTitle = (TextView) convertView.findViewById(R.id.info_item_title);
 			holder.createTime = (TextView) convertView.findViewById(R.id.info_item_createTime);
+			holder.infoItemIsTop = (TextView) convertView.findViewById(R.id.info_item_isTop);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -70,6 +72,11 @@ public class InfoListAdapter extends BaseAdapter {
 		InfoBean info = infoBeen.get(position);
 		holder.tvTitle.setText(info.getTitle());
 		holder.createTime.setText(info.getCreateTimeStr());
+		if("1".equals(info.getIsTop())) {
+			holder.infoItemIsTop.setVisibility(View.VISIBLE);
+		}else {
+			holder.infoItemIsTop.setVisibility(View.GONE);
+		}
 		holder.infoId = info.getId();
 
 		mAbImageLoader.display(holder.ivLogo, info.getLogo());

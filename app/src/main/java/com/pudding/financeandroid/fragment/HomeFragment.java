@@ -17,15 +17,14 @@ import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.activity.AdvertisementDetailActivity;
 import com.pudding.financeandroid.activity.ApplyInvestActivity;
 import com.pudding.financeandroid.activity.ApplyLoanActivity;
+import com.pudding.financeandroid.activity.CompanyCultureActivity;
 import com.pudding.financeandroid.activity.FinancingDetailActivity;
 import com.pudding.financeandroid.activity.LoanDetailActivity;
 import com.pudding.financeandroid.activity.MainActivity;
 import com.pudding.financeandroid.activity.NewFinancingActivity;
-import com.pudding.financeandroid.activity.UserAgreementActivity;
 import com.pudding.financeandroid.adapter.FinancingListAdapter;
 import com.pudding.financeandroid.adapter.HomeGridAdapter;
 import com.pudding.financeandroid.adapter.LoanListAdapter;
-import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
 import com.pudding.financeandroid.bean.AdvsListBean;
 import com.pudding.financeandroid.bean.ApplicationBean;
@@ -181,9 +180,10 @@ public class HomeFragment extends LazyFragment{
                         break;
                     case 4:
                         Intent intentRecommend = new Intent();
-                        intentRecommend.putExtra("url", BaseApi.BASE_URL + BaseApi.recommend_xplain);
-                        intentRecommend.putExtra("title", "推荐有礼规则说明");
-                        intentRecommend.setClass(mContext, UserAgreementActivity.class);
+//                        intentRecommend.putExtra("url", BaseApi.BASE_URL + BaseApi.recommend_xplain);
+//                        intentRecommend.putExtra("title", "推荐有礼规则说明");
+//                        intentRecommend.setClass(mContext, UserAgreementActivity.class);
+                        intentRecommend.setClass(mContext, CompanyCultureActivity.class);
                         startActivity(intentRecommend);
                         break;
                     case 5:
