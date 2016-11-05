@@ -17,6 +17,8 @@ public class FinancingBean implements Serializable{
     private String yearRateStr;
     //起投金额
     private Integer minAmount;
+    //起投金额-字符串
+    private Integer minAmountStr;
     //投资期限
     private String investTimeName;
     private String name;
@@ -27,10 +29,16 @@ public class FinancingBean implements Serializable{
     private List<LoanContentBean> richTextContent;
     //总金额
     private String totalAmount;
+    //总金额-字符串
+    private String totalAmountStr;
     //已经完成金额
     private String finishAmount;
+    //已经完成金额-字符串
+    private String finishAmountStr;
     //可购金额对应
     private String maxAmount;
+    //可购金额对应-字符串(单人可投最高金额)
+    private String maxAmountStr;
     //还款方式
     private FinancingInterestPolicyBean interestPolicy;
     //完成进度
@@ -140,4 +148,35 @@ public class FinancingBean implements Serializable{
         this.finishRateStr = finishRateStr;
     }
 
+    public Integer getMinAmountStr() {
+        return minAmountStr;
+    }
+
+    public void setMinAmountStr(Integer minAmountStr) {
+        this.minAmountStr = minAmountStr;
+    }
+
+    public String getTotalAmountStr() {
+        return totalAmountStr;
+    }
+
+    public void setTotalAmountStr(String totalAmountStr) {
+        this.totalAmountStr = totalAmountStr;
+    }
+
+    public String getFinishAmountStr() {
+        return finishAmountStr;
+    }
+
+    public void setFinishAmountStr(String finishAmountStr) {
+        this.finishAmountStr = finishAmountStr;
+    }
+
+    public String getMaxAmountStr() {
+        return maxAmountStr;
+    }
+
+    public void setMaxAmountStr(String maxAmountStr) {
+        this.maxAmountStr = maxAmountStr;
+    }
 }

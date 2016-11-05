@@ -7,8 +7,11 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
@@ -19,9 +22,14 @@ import com.ab.view.titlebar.AbTitleBar;
 import com.pudding.financeandroid.R;
 import com.pudding.financeandroid.api.BaseApi;
 import com.pudding.financeandroid.api.RequestImpl;
+import com.pudding.financeandroid.bean.LoanStageBean;
 import com.pudding.financeandroid.form.UserRegisterForm;
 import com.pudding.financeandroid.response.CommonResponse;
+import com.pudding.financeandroid.util.CommonUtil;
 import com.pudding.financeandroid.util.TitleBarUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 注册页面的activity
@@ -45,6 +53,8 @@ public class RegisterActivity extends AbActivity{
     private Boolean isChecked = true;
     /** 连接对象 */
     private RequestImpl ri = null;
+    private List<LoanStageBean> loanProductListBean = new ArrayList<>(2);
+    private String productId = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +127,7 @@ public class RegisterActivity extends AbActivity{
                 }
                 //直接提交注册吧
                 UserRegisterForm form = new UserRegisterForm("", randCode, phone, firstPwd,
-                        referrerMobileTv.getText().toString());
+                        referrerMobileTv.getText().toString(), Integer.valueOf(productId));
                 sendRegisterPost(form);
             }
         });
@@ -189,6 +199,33 @@ public class RegisterActivity extends AbActivity{
                 startActivity(intent);
             }
         });
+        initSpinnerForSex();
+    }
+
+    private void initSpinnerForSex() {
+        this.loanProductListBean.add(new LoanStageBean("1", "男"));
+        this.loanProductListBean.add(new LoanStageBean("2", "女"));
+        //加入性别的选择下拉菜单
+        Spinner spinnerProduct = (Spinner) findViewById(R.id.spinner_sex_list);
+        //将可选内容与ArrayAdapter连接起来
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, R.layout.simple_spinner_item, CommonUtil.parseNameList(loanProductListBean));
+        //设置下拉列表的风格
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //将adapter 添加到spinner中s
+        spinnerProduct.setAdapter(adapter);
+        //添加事件Spinner事件监听
+        spinnerProduct.setOnItemSelectedListener(new SpinnerProductSelectedListener());
+        spinnerProduct.setVisibility(View.VISIBLE);
+    }
+
+    //使用数组形式操作
+    public class SpinnerProductSelectedListener implements AdapterView.OnItemSelectedListener {
+        public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            //选择的第几个选项
+            LoanStageBean productBean = loanProductListBean.get(arg2);
+            productId = productBean.getId();
+        }
+        public void onNothingSelected(AdapterView<?> arg0) {}
     }
 
     // 再次获取验证码方法

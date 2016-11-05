@@ -13,6 +13,14 @@ public class LoanStageBean implements Serializable{
     private String id;
     private String name;
 
+    public LoanStageBean() {
+    }
+
+    public LoanStageBean(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

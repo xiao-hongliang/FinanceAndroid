@@ -12,16 +12,19 @@ public class UserRegisterForm {
     private String mobile;
     private String password;
     private String referrerMobile;
+    private Integer sex;
 
     public UserRegisterForm() {
     }
 
-    public UserRegisterForm(String pushId, String code, String mobile, String password, String referrerMobile) {
+    public UserRegisterForm(String pushId, String code, String mobile, String password,
+                            String referrerMobile, int sex) {
         this.pushId = pushId;
         this.code = code;
         this.mobile = mobile;
         this.password = password;
         this.referrerMobile = referrerMobile;
+        this.sex = sex;
     }
 
     public UserRegisterForm(String pushId, String code, String mobile, String password) {
@@ -69,5 +72,13 @@ public class UserRegisterForm {
 
     public void setReferrerMobile(String referrerMobile) {
         this.referrerMobile = referrerMobile;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 }

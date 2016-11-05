@@ -109,7 +109,7 @@ public class FinancingDetailActivity extends AbActivity{
         this.phone = bean.getPhone();
         //剩余多少
         TextView surplusTv = (TextView) this.findViewById(R.id.surplus_tv);
-        surplusTv.setText("(剩" + bean.getMaxAmount() + "/" + bean.getTotalAmount() + "万)");
+        surplusTv.setText("(剩" + bean.getMaxAmountStr() + "/" + bean.getTotalAmountStr() + ")");
         TextView financingName = (TextView) this.findViewById(R.id.financing_name);
         financingName.setText(bean.getName());
         TextView financingYearRate = (TextView) this.findViewById(R.id.financing_year_rate);
@@ -118,13 +118,13 @@ public class FinancingDetailActivity extends AbActivity{
         TextView financingPercentage = (TextView) this.findViewById(R.id.financing_percentage);
         financingPercentage.setText(bean.getFinishRateStr());
         TextView financingMinAmount = (TextView) this.findViewById(R.id.financing_minAmount);
-        financingMinAmount.setText(bean.getMinAmount()+"");
+        financingMinAmount.setText(bean.getMinAmountStr()+"");
         TextView financingInterestPolicy = (TextView) this.findViewById(R.id.financing_interestPolicy);
         financingInterestPolicy.setText(bean.getInterestPolicy().getName());
         TextView financingMaxAmount = (TextView) this.findViewById(R.id.financing_maxAmount);
-        financingMaxAmount.setText(bean.getMaxAmount());
+        financingMaxAmount.setText(bean.getMaxAmountStr());
         TextView financingTotalAmount = (TextView) this.findViewById(R.id.financing_totalAmount);
-        financingTotalAmount.setText(bean.getTotalAmount());
+        financingTotalAmount.setText(bean.getTotalAmountStr());
         TextView financingInvestTimeName = (TextView) this.findViewById(R.id.financing_investTimeName);
         financingInvestTimeName.setText(bean.getInvestTimeName());
 

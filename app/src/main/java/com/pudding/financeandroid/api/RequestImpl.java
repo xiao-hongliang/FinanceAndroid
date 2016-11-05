@@ -87,6 +87,7 @@ public class RequestImpl {
 		params.put("mobile", form.getMobile());
 		params.put("password", form.getPassword());
 		params.put("referrerMobile", form.getReferrerMobile());
+		params.put("sex", form.getSex());
 		mAbHttpUtil.get(BaseApi.BASE_URL + api.user_register, params, responseListener);
 	}
 
