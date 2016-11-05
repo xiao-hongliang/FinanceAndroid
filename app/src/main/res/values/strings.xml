@@ -83,4 +83,6 @@
 
     <string name="income_detail">收益明细</string>
     <string name="user_message">消息</string>
+    <string name="financing_new_text">理 财 新 品</string>
+    <string name="loan_new_text">贷 款 新 品</string>
 </resources>

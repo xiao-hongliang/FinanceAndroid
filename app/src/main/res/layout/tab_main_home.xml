@@ -47,19 +47,46 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/txt0"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp">
 
-            <!--<ListView-->
-                <!--android:id="@+id/main_financing_list_view"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-            <!--</ListView>-->
+                <TextView
+                    android:id="@+id/financing_new_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/financing_new_text"
+                    android:textSize="23sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/font_3"/>
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="1dp"
+                    android:background="@color/font_6"
+                    android:layout_toLeftOf="@+id/financing_new_icon"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="1dp"
+                    android:background="@color/font_6"
+                    android:layout_toRightOf="@+id/financing_new_icon"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/txt0"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginBottom="10dp"/>-->
 
             <com.pudding.financeandroid.view.MyListView
                 android:id="@+id/main_financing_list_view"
@@ -75,19 +102,46 @@
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/txt1"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp">
 
-            <!--<ListView-->
-                <!--android:id="@+id/main_loan_list_view"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-            <!--</ListView>-->
+                <TextView
+                    android:id="@+id/load_new_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/loan_new_text"
+                    android:textSize="23sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/font_3"/>
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="1dp"
+                    android:background="@color/font_6"
+                    android:layout_toLeftOf="@+id/load_new_icon"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="1dp"
+                    android:background="@color/font_6"
+                    android:layout_toRightOf="@+id/load_new_icon"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/txt1"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginBottom="10dp"/>-->
 
             <com.pudding.financeandroid.view.MyListView
                 android:id="@+id/main_loan_list_view"
