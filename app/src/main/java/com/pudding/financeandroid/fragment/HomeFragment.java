@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbJsonUtil;
+import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pudding.financeandroid.R;
@@ -22,6 +23,7 @@ import com.pudding.financeandroid.activity.FinancingDetailActivity;
 import com.pudding.financeandroid.activity.LoanDetailActivity;
 import com.pudding.financeandroid.activity.MainActivity;
 import com.pudding.financeandroid.activity.NewFinancingActivity;
+import com.pudding.financeandroid.activity.UserLoginActivity;
 import com.pudding.financeandroid.adapter.FinancingListAdapter;
 import com.pudding.financeandroid.adapter.HomeGridAdapter;
 import com.pudding.financeandroid.adapter.LoanListAdapter;
@@ -32,6 +34,7 @@ import com.pudding.financeandroid.bean.FinancingBean;
 import com.pudding.financeandroid.bean.LoanBean;
 import com.pudding.financeandroid.bean.MainBean;
 import com.pudding.financeandroid.response.MainResponse;
+import com.pudding.financeandroid.util.SPUtils;
 import com.pudding.financeandroid.view.ADInfo;
 import com.pudding.financeandroid.view.ImageCycleView;
 import com.pudding.financeandroid.view.MyGridView;
@@ -157,6 +160,8 @@ public class HomeFragment extends LazyFragment{
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int index, long arg3) {
                 MainActivity tabMainActivity = (MainActivity) getActivity();
+                //判断一下，是否处于登录状态，详情需要登陆了才可以才看
+                String phone = (String) SPUtils.get(mContext, "phone", "");
                 switch (index) {
                     case 0:
                         Intent newFinancingApply = new Intent();
@@ -168,14 +173,22 @@ public class HomeFragment extends LazyFragment{
                         break;
                     case 2:
                         Intent financingApply = new Intent();
-                        financingApply.setClass(mContext, ApplyInvestActivity.class);
-                        financingApply.putExtra("isMainEnter", Boolean.TRUE);
+                        if (AbStrUtil.isEmpty(phone)) {
+                            financingApply.setClass(mContext, UserLoginActivity.class);
+                        }else {
+                            financingApply.setClass(mContext, ApplyInvestActivity.class);
+                            financingApply.putExtra("isMainEnter", Boolean.TRUE);
+                        }
                         startActivity(financingApply);
                         break;
                     case 3:
                         Intent loanApply = new Intent();
-                        loanApply.setClass(mContext, ApplyLoanActivity.class);
-                        loanApply.putExtra("isMainEnter", Boolean.TRUE);
+                        if (AbStrUtil.isEmpty(phone)) {
+                            loanApply.setClass(mContext, UserLoginActivity.class);
+                        }else {
+                            loanApply.setClass(mContext, ApplyLoanActivity.class);
+                            loanApply.putExtra("isMainEnter", Boolean.TRUE);
+                        }
                         startActivity(loanApply);
                         break;
                     case 4:

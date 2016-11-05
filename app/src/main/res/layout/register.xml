@@ -94,6 +94,31 @@
         android:layout_marginBottom="1dp">
 
         <ImageView
+            android:id="@+id/sex_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_telephone"
+            android:layout_centerVertical="true"/>
+
+        <Spinner
+            android:id="@+id/spinner_sex_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animationCache="true"
+            android:drawSelectorOnTop="true"
+            android:layout_toRightOf="@id/sex_icon"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginBottom="1dp">
+
+        <ImageView
             android:id="@+id/img_reg_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,8 +191,7 @@
         android:layout_height="55dp"
         android:background="@color/white"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_marginBottom="1dp">
+        android:paddingRight="15dp">
 
         <ImageView
             android:id="@+id/recommend_icon"
@@ -195,30 +219,6 @@
             android:src="@drawable/icon_off"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/white"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
-
-        <ImageView
-            android:id="@+id/sex_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_telephone"
-            android:layout_centerVertical="true"/>
-
-        <Spinner
-            android:id="@+id/spinner_sex_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animationCache="true"
-            android:drawSelectorOnTop="true"
-            android:layout_toRightOf="@id/sex_icon"/>
 
     </RelativeLayout>
 
