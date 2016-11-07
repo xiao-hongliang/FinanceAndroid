@@ -72,16 +72,16 @@ public class InfoListFragment extends Fragment {
         ptrlvMainContent = (PullToRefreshListView) view.findViewById(R.id.ptrlvMainCont);
         switch(flag){
         	case 0:
-				httpPost(0, Boolean.FALSE, null);   //全部
+				httpPost("00", Boolean.FALSE, null);   //全部
         		break;
         	case 1:
-				httpPost(10, Boolean.FALSE, null);   //行业新闻
+				httpPost("10", Boolean.FALSE, null);   //行业新闻
         		break;
         	case 2:
-				httpPost(20, Boolean.FALSE, null);   //公司动态
+				httpPost("20", Boolean.FALSE, null);   //公司动态
         		break;
         	case 3:
-				httpPost(30, Boolean.FALSE, null);   //贸易公司
+				httpPost("30", Boolean.FALSE, null);   //贸易公司
         		break;
         }
         return view;
@@ -94,7 +94,7 @@ public class InfoListFragment extends Fragment {
         ptrlvMainContent.setAdapter(newAdapter);
 	}
 
-	private void httpPost(final int typeValue, final Boolean isMorePage, final PullToRefreshListView perv) {
+	private void httpPost(final String typeValue, final Boolean isMorePage, final PullToRefreshListView perv) {
 		if(isMorePage) {
 			pageNum++;
 		}
@@ -146,8 +146,8 @@ public class InfoListFragment extends Fragment {
 
 	class MyOnRefreshListener2 implements PullToRefreshBase.OnRefreshListener2<ListView> {
 		private PullToRefreshListView mPtflv;
-		private int typeValue;
-		public MyOnRefreshListener2(PullToRefreshListView ptflv, int typeValue) {
+		private String typeValue;
+		public MyOnRefreshListener2(PullToRefreshListView ptflv, String typeValue) {
 			this.mPtflv = ptflv;
 			this.typeValue = typeValue;
 		}

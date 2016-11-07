@@ -12,22 +12,22 @@ public class HandlerInfoBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private int type;
+    private String type;
     private List<InfoBean> handlerData;
 
     public HandlerInfoBean() {
     }
 
-    public HandlerInfoBean(int type, List<InfoBean> handlerData) {
+    public HandlerInfoBean(String type, List<InfoBean> handlerData) {
         this.type = type;
         this.handlerData = handlerData;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

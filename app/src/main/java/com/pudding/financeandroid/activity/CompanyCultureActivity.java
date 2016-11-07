@@ -54,7 +54,7 @@ public class CompanyCultureActivity extends AbActivity{
                 finish();
             }
         });
-        httpPost(40, Boolean.FALSE, null);
+        httpPost("40", Boolean.FALSE, null);
     }
 
     private void initView(HandlerInfoBean infoBeen){
@@ -67,8 +67,8 @@ public class CompanyCultureActivity extends AbActivity{
 
     class MyOnRefreshListener2 implements PullToRefreshBase.OnRefreshListener2<ListView> {
         private PullToRefreshListView mPtflv;
-        private int typeValue;
-        public MyOnRefreshListener2(PullToRefreshListView ptflv, int typeValue) {
+        private String typeValue;
+        public MyOnRefreshListener2(PullToRefreshListView ptflv, String typeValue) {
             this.mPtflv = ptflv;
             this.typeValue = typeValue;
         }
@@ -89,7 +89,7 @@ public class CompanyCultureActivity extends AbActivity{
         }
     }
 
-    private void httpPost(final int typeValue, final Boolean isMorePage, final PullToRefreshListView perv) {
+    private void httpPost(final String typeValue, final Boolean isMorePage, final PullToRefreshListView perv) {
         if(isMorePage) {
             pageNum++;
         }
