@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\myself_work\yaolian\FinanceAndroid\library\src\main\assets"/><source path="D:\myself_work\yaolian\FinanceAndroid\library\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\myself_work\yaolian\FinanceAndroid\library\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\android\FinanceAndroid\library\src\main\assets"/><source path="D:\android\FinanceAndroid\library\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\android\FinanceAndroid\library\src\release\assets"/></dataSet></merger>
